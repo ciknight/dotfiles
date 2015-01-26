@@ -1,0 +1,126 @@
+### angularJS
+# controller
+snippet ngcont
+	${1:/* module name */}.controller(${2:/* controller name */}['$scope'${3}, function($scope, ${4}) {
+		${5}	
+	}]);
+
+# factory
+snippet ngfact
+	${1:/* module name */}.factory(${2:/* factory name */}, ['${3:/* dependency */}', function(${4}) {
+		${5}	
+	}]);
+
+# directive
+snippet ngdir
+	${1:/* module name */}.directive(${2:/* directive name */}, function(${3}) {
+		return {
+			restrict: '${4}',
+			templateUrl: '${5}',
+			link: function (scope, element, attrs) {
+				${6}
+			}
+		}
+	});
+
+# module
+snippet ngmod
+	angular.module('${1: /* module name */}', [])${2: /* mas? */}
+
+# config routes
+snippet ngroutep
+	config(['$routeProvider', function($routeProvider) {
+		
+		$routeProvider.
+			when('${1:/* url */}', { templateUrl: '${2:/* path */}'})${3:/* mas? */}
+	}]);
+
+snippet ngroute
+	when('${1:/* url */}', { templateUrl: '${2:/* path */}'})${3:/* mas? */}
+
+
+### javascript 
+snippet f
+	function (${1}) {
+		${2}
+	}
+snippet func
+	function ${1} (${2}) {
+		${3}
+	}
+#
+snippet proto
+	prototype.${1:/* fn name */} = function(${2}) {
+		${3}
+	}
+
+snippet if
+	if (${1:/* condition */}) {
+		${2: /* do something */}
+	}
+
+snippet ife
+	if (${1:/* condition */}) {
+		${2: /* do something */}
+	} else {
+		${3: /* do something else */}
+	}
+
+### jasmine
+snippet describe
+	describe('${1: /* something */}', function () {
+		${2: /* ??? */}
+	});
+
+snippet it
+	it('should ${1: /* does things /*}', function () {
+		${2: /* ??? */}
+	});
+snippet nginject
+	inject (function($injector) {
+		${1} = $injector.get('${2}');
+	});
+snippet ngspec:controller
+	describe('${1}', function () {
+		var $scope,
+			$rootScope,
+			$controller,
+			controller;
+
+		beforeEach(function () {
+			module(${2});
+			
+			inject(function (_$rootScope_, _$controller_, $injector) {
+				$rootScope = _$rootScope_;
+				$scope = $rootScope.$new();
+				$controller = _$controller_;
+			});
+
+			controller = $controller('${3}', { $scope: $scope });
+		});
+
+		${4}
+	});
+snippet ngspec:service
+	describe('${1}', function () {
+		var $rootScope,
+			$injector,
+			service;
+
+		beforeEach(function () {
+			module(${2});
+			
+			inject(function (_$rootScope_, _$injector_) {
+				$rootScope = _$rootScope_;
+				$injector = _$injector_;
+			});
+
+			service = $injector.get('${3}')
+		});
+
+		${4}
+	});
+snippet beforeEach
+	beforeEach (function (${1}) {
+		${2}
+	});
