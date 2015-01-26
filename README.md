@@ -8,7 +8,7 @@ Installation:
 Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/gvimrc ~/.gvimrc
+    ln -s ~/.vim/ideavimrc ~/.ideavimrc
 
 Switch to the `~/.vim` directory, and fetch submodules:
 
