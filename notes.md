@@ -42,4 +42,22 @@ Status Bar
 ----------
 * Vim-status only works in split screen ... [Fix later](https://github.com/bling/vim-airline/wiki/FAQ)
 
+# Plugins
+
+Minibufexpl
+-----------
+
+* `<c-direction>` switch buffer
+
+Jedi-vim
+--------
+* **python refactoring**
+
+Python-Mode
+-----------
+* `<leader>r` run python code
+* `<leader>b` add/remove breakpoints
+*
+
+
 
