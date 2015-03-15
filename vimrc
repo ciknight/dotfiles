@@ -92,7 +92,18 @@ nmap <leader>a <Esc>:Ack!
 
 " Python-Mode
 let g:pymode = 1
-let g:pymode_python = 'python'
+let g:pymode_python = 'python3'
 
-" rope
-let g:pymode_rope = 1
+" disable rope
+let g:pymode_rope = 0
+
+" jedi
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#completions_enabled = 1
+
+

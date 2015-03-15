@@ -27,4 +27,7 @@
 	url = http://github.com/klen/python-mode
 [submodule "bundle/jedi-vim"]
 	path = bundle/jedi-vim
-	url = http://github.com/davidhalter/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim
+[submodule "bundle/vim-virtualenv"]
+	path = bundle/vim-virtualenv
+	url = git@github.com:jmcantrell/vim-virtualenv.git
