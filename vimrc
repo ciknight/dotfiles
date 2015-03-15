@@ -25,6 +25,7 @@ syntax enable
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+highlight clear SignColumn
 set t_Co=256                        " force vim to use 256 colors
 
 autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
@@ -49,8 +50,8 @@ map <S-Enter> O<ESC>
 imap jj <ESC>
 
 " relative line numbers
-set relativenumber
 set number
+set relativenumber
 
 " Code Folding
 set foldmethod=indent

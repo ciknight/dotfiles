@@ -9,7 +9,7 @@
 	url = https://github.com/mitechie/pyflakes-pathogen.git
 [submodule "bundle/ack"]
 	path = bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
+	url = git@github.com:mileszs/ack.vim.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
@@ -31,3 +31,6 @@
 [submodule "bundle/vim-virtualenv"]
 	path = bundle/vim-virtualenv
 	url = git@github.com:jmcantrell/vim-virtualenv.git
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
