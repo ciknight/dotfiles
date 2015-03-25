@@ -10,7 +10,6 @@ let mapleader = ','
 " mouse mode
 set mouse=a
 
-
 " Pathogen 
 filetype off
 call pathogen#infect()
@@ -66,6 +65,8 @@ map <c-h> <c-w>h
 " hotkey collision
 map <leader>td <Plug>TaskList
 
+" allow quit via single keypress
+map <leader>q :q<CR>
 
 " default directory for custom snippets
 let g:snippets_dir = "~/.vim/snippets"
@@ -105,7 +106,8 @@ let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+"let g:jedi#rename_command = "<leader>rn"  " already taken by 'run code'
 let g:jedi#completions_enabled = 1
 
-
+" minibufexpl
+map <Leader>t :MBEToggle<cr>
