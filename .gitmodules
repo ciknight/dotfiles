@@ -9,31 +9,31 @@
 	url = https://github.com/mitechie/pyflakes-pathogen.git
 [submodule "bundle/ack"]
 	path = bundle/ack
-	url = git@github.com:mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
 [submodule "bundle/minibufexpl"]
 	path = bundle/minibufexpl
-	url = git@github.com:fholgado/minibufexpl.vim.git
+	url = https://github.com/fholgado/minibufexpl.vim.git
 [submodule "bundle/vim-colors-solarized"]
     path = bundle/vim-colors-solarized
-    url = git@github.com:altercation/vim-colors-solarized.git
+    url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/vim-javascript"]
     path = bundle/vim-javascript
-    url = git@github.com:pangloss/vim-javascript
+    url = https://github.com/pangloss/vim-javascript
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = http://github.com/klen/python-mode
 [submodule "bundle/jedi-vim"]
 	path = bundle/jedi-vim
-	url = git@github.com:davidhalter/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim
 [submodule "bundle/vim-virtualenv"]
 	path = bundle/vim-virtualenv
-	url = git@github.com:jmcantrell/vim-virtualenv.git
+	url = https://github.com/jmcantrell/vim-virtualenv.git
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
+	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "bundle/vim-javascript-syntax"]
 	path = bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
