@@ -100,6 +100,9 @@ let g:pymode_lint_on_write = 0
 " disable rope
 let g:pymode_rope = 0
 
+" I want to use this import feature ...
+"let pymode_rope_auto_import = 1
+
 " jedi
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
