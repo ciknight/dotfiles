@@ -1,14 +1,18 @@
 Notes
 =====
 
+Navigation
+-----
+* `<C-d>` scroll down 1 page
+* `<C-u>` scroll up 1 page
+
 Python
 ------
-
-* `<C-Space>` Completion
+ `<C-Space>` Completion
 * `<leader>g` Goto assignments
 * `<leader>d` Goto definitions
 * `K` Show Documentation/Pydoc
-* `<leader>r` Renaming
+* `leader>r` Renaming
 * `<leader>n` Usages
 * `:Pyimport os` Open module (opens the os module)
 * `<leader>pw` reads the docs for a function. (supertab ... necesary?)
@@ -21,22 +25,16 @@ Search
 
 Buffers
 -------
-
 * I'm using [minibufexpl](https://github.com/techlivezheng/vim-plugin-minibufexpl) to better manage buffers
 * `:e foo.py` to open file foo.py in a buffer
 * `:b1` to switches to first buffer
 * `:bd` or `:bw` close buffers
-
 
 Window Sizing
 -------------
 * `Ctrl+w + v` Vertical Split
 * `Ctrl+w + s` Horizontal Split
 * `Ctrl+w + q` Close current windows
-
-Browsing
---------
-* `<leader>n` opens Nerd Tree file browser
 
 Status Bar
 ----------
@@ -46,7 +44,6 @@ Status Bar
 
 Minibufexpl
 -----------
-
 * `<c-direction>` switch buffer
 
 Jedi-vim
@@ -57,12 +54,13 @@ Python-Mode
 -----------
 * `<leader>r` run python code
 * `<leader>b` add/remove breakpoints
-*
 
 Nerd Tree
 ---------
-* `NERDTreeToggle` toggles the tree
-* o              Open files, directories and bookmarks
+* `<leader>n` opens Nerd Tree file browser
+* `m` open menu (new node, delete node, move node, copy node)
+* `r` reload
+* `o` Open files, directories and bookmarks
 * go            Open selected file, but leave cursor in the NERDTree
 * t              Open selected node/bookmark in a new tab
 * T              Same as 't' but keep the focus on the current tab
@@ -74,4 +72,5 @@ Nerd Tree
 * x              Close the current nodes parent
 * X              Recursively close all children of the current node
 * e              Edit the current dir
+
 
