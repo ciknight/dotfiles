@@ -13,6 +13,9 @@ set mouse=a
 " Pathogen 
 filetype off
 call pathogen#infect()
+" to load bundle from custom director. do i want this?
+" execute pathogen#infect('~/.dotfiles/vim/bundle/{}')   
+
 call pathogen#helptags()
 
 " turn filetype on
@@ -98,7 +101,7 @@ let g:pymode = 1
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
 
-" disable rope
+" disable rope, using jedi instead b/c rope wasn't working
 let g:pymode_rope = 0
 
 " I want to use this import feature ...
@@ -111,7 +114,12 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 "let g:jedi#rename_command = "<leader>rn"  " already taken by 'run code'
+let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#completions_enabled = 1
 
 " minibufexpl
 map <Leader>t :MBEToggle<cr>
+
+" emmet ... wtf why no work?
+" let g:user_emmet_leader_key='<C-Space>'
+" let g:user_emmet_leader_key='<C-Z>'
