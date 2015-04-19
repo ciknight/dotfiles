@@ -49,3 +49,6 @@
 [submodule "zsh/dircolors-solarized"]
 	path = zsh/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule "vim/bundle/emmit-vim"]
+	path = vim/bundle/emmit-vim
+	url = https://github.com/mattn/emmet-vim.git
