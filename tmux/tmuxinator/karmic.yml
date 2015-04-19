@@ -1,0 +1,50 @@
+# ~/.tmuxinator/karmic.yml
+
+name: karmic
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+windows:
+# - backend:
+#     layout: c654,204x51,0,0{102x51,0,0[102x25,0,0,1,102x25,0,26,10],101x51,103,0,9}
+#     panes:
+#       - vim: cd code/karmic/karmicapp; tmux send-keys C-l
+#       - top
+#       - # nothing
+  - b1: cd code/karmic/karmicapp;
+  - b2: cd code/karmic/karmicapp; 
+  - f1: cd code/karmic/web-frontend-code;
+  - f2: cd code/karmic/web-frontend-code;
+  #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
+  #- notes: cd code/notes; vim; tmux send-keys -l iabc;
+  - notes: 
+    - cd code/notes
+    - vim 
+    - Escape
+    - ":NERDTreeToggle"
+    - Escape
+    - ":MBEToggle"
+
+  - database:  
+      layout: c654,204x51,0,0{102x51,0,0[102x25,0,0,1,102x25,0,26,10],101x51,103,0,9}
+      panes: 
+        - redis-server
+        - redis-cli  
+        - psql && clear

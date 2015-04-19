@@ -1,45 +1,51 @@
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
 	url = https://github.com/wincent/Command-T.git
 [submodule "pyflakes-pathogen"]
 	path = pyflakes-pathogen
 	url = https://github.com/mitechie/pyflakes-pathogen.git
-[submodule "bundle/ack"]
-	path = bundle/ack
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
-[submodule "bundle/minibufexpl"]
-	path = bundle/minibufexpl
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
-[submodule "bundle/vim-colors-solarized"]
-    path = bundle/vim-colors-solarized
+[submodule "vim/bundle/vim-colors-solarized"]
+    path = vim/bundle/vim-colors-solarized
     url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-javascript"]
-    path = bundle/vim-javascript
+[submodule "vim/bundle/vim-javascript"]
+    path = vim/bundle/vim-javascript
     url = https://github.com/pangloss/vim-javascript
-[submodule "bundle/python-mode"]
-	path = bundle/python-mode
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
 	url = http://github.com/klen/python-mode
-[submodule "bundle/jedi-vim"]
-	path = bundle/jedi-vim
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
-[submodule "bundle/vim-virtualenv"]
-	path = bundle/vim-virtualenv
+[submodule "vim/bundle/vim-virtualenv"]
+	path = vim/bundle/vim-virtualenv
 	url = https://github.com/jmcantrell/vim-virtualenv.git
-[submodule "bundle/vim-gitgutter"]
-	path = bundle/vim-gitgutter
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "bundle/vim-javascript-syntax"]
-	path = bundle/vim-javascript-syntax
+[submodule "vim/bundle/vim-javascript-syntax"]
+	path = vim/bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
 [submodule "vim-unimpaired"]
 	path = vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "bundle/vim-unimpaired"]
-	path = bundle/vim-unimpaired
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim
+[submodule "zsh/dircolors-solarized"]
+	path = zsh/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git

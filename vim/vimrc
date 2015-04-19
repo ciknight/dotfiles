@@ -31,6 +31,7 @@ autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
