@@ -12,10 +12,8 @@ set mouse=a
 
 " Pathogen 
 filetype off
+set runtimepath+="~/.dotfiles/vim/autoload"  " Load Pathogen
 call pathogen#infect()
-" to load bundle from custom director. do i want this?
-" execute pathogen#infect('~/.dotfiles/vim/bundle/{}')   
-
 call pathogen#helptags()
 
 " turn filetype on
