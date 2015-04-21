@@ -28,14 +28,18 @@ windows:
 #       - vim: cd code/karmic/karmicapp; tmux send-keys C-l
 #       - top
 #       - # nothing
-  - b1: cd code/karmic/karmicapp;
-  - b2: cd code/karmic/karmicapp; 
-  - f1: cd code/karmic/web-frontend-code;
-  - f2: cd code/karmic/web-frontend-code;
+  - b1: 
+    - cd ~/Code/Karmic/karmicapp
+  - b2: 
+    - cd ~/Code/Karmic/karmicapp 
+  - f1:
+    - cd ~/Code/Karmic/web-frontend-code
+  - f2: 
+    - cd ~/Code/Karmic/web-frontend-code
   #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
   #- notes: cd code/notes; vim; tmux send-keys -l iabc;
   - notes: 
-    - cd code/notes
+    - cd ~/Code/Notes
     - vim 
     - Escape
     - ":NERDTreeToggle"
