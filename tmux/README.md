@@ -1,3 +1,7 @@
+Getting Started
+===============
+- [Fix scrolling in iTerm2](http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2/)
+
 Sessions
 ========
 * `Prefix d` Detaches from the session, leaving the session running in the background.
