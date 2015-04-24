@@ -54,3 +54,9 @@
 [submodule "vim/bundle/emmit-vim"]
 	path = vim/bundle/emmit-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe
