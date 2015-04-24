@@ -101,7 +101,7 @@ let g:pymode_python = 'python'
 let g:pymode_lint_on_write = 0
 
 " disable rope, using jedi instead b/c rope wasn't working
-let g:pymode_rope = 0
+let g:pymode_rope = 1
 
 " I want to use this import feature ...
 "let pymode_rope_auto_import = 1
@@ -124,4 +124,7 @@ map <Leader>t :MBEToggle<cr>
 " let g:user_emmet_leader_key='<C-Z>'
 
 let g:UltiSnipsUsePythonVersion = 2
-   
+  
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
