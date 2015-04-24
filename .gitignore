@@ -2,3 +2,5 @@
 .netrwhist
 idea/
 .idea/
+.ropeproject/
+*.swp
