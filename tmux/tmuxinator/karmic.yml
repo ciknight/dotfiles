@@ -39,7 +39,7 @@ windows:
   #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
   #- notes: cd code/notes; vim; tmux send-keys -l iabc;
   - notes: 
-    - cd ~/Code/Notes
+    - cd ~/Notes
     - vim 
     - Escape
     - ":NERDTreeToggle"
@@ -52,3 +52,6 @@ windows:
         - redis-server
         - redis-cli  
         - psql && clear
+  - dotfiles:
+    - cd ~/.dotfiles
+
