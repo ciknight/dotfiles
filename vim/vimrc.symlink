@@ -1,5 +1,6 @@
 " mouse mode
-set mouse=a
+"set mouse=a
+set mouse=n
 
 " Pathogen 
 filetype off
