@@ -1,0 +1,132 @@
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax on
+
+" leader key
+let mapleader = ','
+
+" mouse mode
+set mouse=a
+
+" Pathogen 
+filetype off
+set runtimepath+="~/.dotfiles/new-vim/autoload"  " Load Pathogen
+call pathogen#infect()
+call pathogen#helptags()
+
+" turn filetype on
+filetype on
+filetype plugin indent on    " enable loading indent file for filetype
+
+" Solarized colors
+syntax enable
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+highlight clear SignColumn
+set t_Co=256                        " force vim to use 256 colors
+
+autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Better copy & paste
+" When you want to paste large blocks of code into vim, press F2 before you
+" paste. At the bottom you should see ``-- INSERT (paste) --``.
+set pastetoggle=<F2>
+set clipboard=unnamed
+
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" Inserting empty lines
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+
+" Insert -> normal mode
+imap jj <ESC>
+
+" relative line numbers
+set number
+set relativenumber
+
+" Code Folding
+set foldmethod=indent
+set foldlevel=99
+
+" Window Splitting
+map <c-j> <c-w>j        " simplify switching windows
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" hotkey collision
+map <leader>td <Plug>TaskList
+
+" allow quit via single keypress
+map <leader>q :q<CR>
+
+" default directory for custom snippets
+let g:snippets_dir = "~/.vim/snippets"
+
+" tab completion
+"au FileType python set omnifunc=pythoncomplete#Complete
+"let g:SuperTabDefaultCompletionType = "context"
+"set completeopt=menuone,longest,preview
+
+" search
+set hlsearch
+
+" Gundo
+map <leader>g :GundoToggle<CR>
+
+" linting
+let g:pyflakes_use_quickfix = 0
+let g:pep8_map='<leader>8'
+
+" NERD Tree file browser
+map <leader>n :NERDTreeToggle<CR>
+
+" Ack fuzzy text search
+nmap <leader>a <Esc>:Ack!
+
+" Python-Mode
+let g:pymode = 1
+" let g:pymode_python = 'python3'
+let g:pymode_python = 'python'
+let g:pymode_lint_on_write = 0
+
+" disable rope, using jedi instead b/c rope wasn't working
+let g:pymode_rope = 1
+
+" I want to use this import feature ...
+"let pymode_rope_auto_import = 1
+
+" jedi
+"let g:jedi#goto_assignments_command = "<leader>g"
+"let g:jedi#goto_definitions_command = "<leader>d"
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#completions_command = "<C-Space>"
+""let g:jedi#rename_command = "<leader>rn"  " already taken by 'run code'
+"let g:jedi#use_tabs_not_buffers = 0
+"let g:jedi#completions_enabled = 1
+
+" minibufexpl
+map <Leader>t :MBEToggle<cr>
+
+" emmet ... wtf why no work?
+" let g:user_emmet_leader_key='<C-Space>'
+" let g:user_emmet_leader_key='<C-Z>'
+
+let g:UltiSnipsUsePythonVersion = 2
+  
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+let g:pymode_virtualenv = 1
