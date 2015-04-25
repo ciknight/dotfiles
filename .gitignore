@@ -4,4 +4,4 @@ idea/
 .idea/
 .ropeproject/
 *.swp
-new-vim/bundle
+new-vim/bundle/
