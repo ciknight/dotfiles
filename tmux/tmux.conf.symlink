@@ -1,5 +1,6 @@
-#RawBlameHistory   
-#### COLOUR (Solarized 256)
+################
+#### COLOUR ####
+################
 
 # default statusbar colors
 set-option -g status-bg colour235 #base02
@@ -14,7 +15,6 @@ set-window-option -g window-status-bg default
 # active window title colors
 set-window-option -g window-status-current-fg colour166 #orange
 set-window-option -g window-status-current-bg default
-#set-window-option -g window-status-current-attr bright
 
 # pane border
 set-option -g pane-border-fg colour235 #base02
@@ -37,8 +37,50 @@ set -g default-terminal "xterm-color"
 # Maintain sensible window ordering
 set-option -g renumber-windows on
 
-set -g prefix C-a
-
 # sane scrolling
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-# set -g mode-mouse on
+
+###################
+#### From Book ####
+###################
+
+# new mapping for prefix
+set -g prefix C-a
+unbind C-b
+
+# Better indexes
+set -g base-index 1
+set -g pane-base-index 1
+
+# Reload .tmux.conf using Prefix-r
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Splitting panes
+bind | split-window -h
+bind - split-window -v
+
+# Moving between panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Quick pane selection
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# Pane resizing
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Mouse support
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+# Center the window list
+set -g status-justify centre
+

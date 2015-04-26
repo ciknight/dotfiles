@@ -1,6 +1,5 @@
 " mouse mode
-"set mouse=a
-set mouse=n
+set mouse=n  "doesn't work
 
 " Pathogen 
 filetype off
@@ -39,6 +38,7 @@ set hlsearch
 """"""""""""""""""""
 """" Appearance """"
 """"""""""""""""""""
+
 syntax on
 
 " Solarized colors
@@ -65,7 +65,7 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
 " Insert -> normal mode
-imap ff <ESC>
+imap jj <ESC>
 
 " Window Switching
 map <c-j> <c-w>j
@@ -107,9 +107,3 @@ let g:pymode_motion = 1
 " emmet ... wtf why no work?
 " let g:user_emmet_leader_key='<C-Space>'
 " let g:user_emmet_leader_key='<C-Z>'
-
-" UltiSnips
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"

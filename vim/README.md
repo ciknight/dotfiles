@@ -41,6 +41,15 @@ Python
 * `:Pyimport os` Open module (opens the os module)
 * `<leader>pw` reads the docs for a function. (supertab ... necesary?)
 
+[[                Jump to previous class or function (normal, visual, operator modes)
+]]                Jump to next class or function  (normal, visual, operator modes)
+[M                Jump to previous class or method (normal, visual, operator modes)
+]M                Jump to next class or method (normal, visual, operator modes)
+aC                Select a class. Ex: vaC, daC, yaC, caC (normal, operator modes)
+iC                Select inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
+aM                Select a function or method. Ex: vaM, daM, yaM, caM (normal, operator modes)
+iM                Select inner function or method. Ex: viM, diM, yiM, ciM (normal, operator modes)
+
 Search
 ------
 * `<leader>t` does fuzzy text search in whole project
@@ -98,4 +107,8 @@ Nerd Tree
 * X              Recursively close all children of the current node
 * e              Edit the current dir
 
+
+Surround
+========
+* block select + `S{` to wrap block in curlies
 
