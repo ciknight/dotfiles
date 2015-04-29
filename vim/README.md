@@ -20,6 +20,8 @@ To add additional submodules to repo, run:
 
     git submodule add http://github.com/[user]/[repo-name].git bundle/[repo-name-of-choice]
 
+Make sure you run `npm install` from within the `vim/bundle/tern` directory.
+
 Inspired by [this](http://www.sontek.net/blog/2011/05/07/turning_vim_into_a_modern_python_ide.html) and [this](http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/) and [&#9731;](https://github.com/UnicodeSnowman/cap-vim) among others.
 
 Notes
@@ -27,8 +29,9 @@ Notes
 
 Navigation
 -----
-* `<C-d>` scroll down 1 page
-* `<C-u>` scroll up 1 page
+* `<C-e>`, `<C-y>` scroll up, down
+* `<C-u>`, `<C-d>` scroll 1/2 page down, up
+* `<C-f>`, `<C-b>` scroll 1 page up, down
 
 Python
 ------
@@ -112,3 +115,6 @@ Surround
 ========
 * block select + `S{` to wrap block in curlies
 
+Helpful Links
+=============
+* http://tnerual.eriogerg.free.fr/vimqrc.html
