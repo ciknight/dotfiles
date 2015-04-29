@@ -59,6 +59,9 @@ bind r source-file ~/.tmux.conf \; display "Reloaded!"
 bind | split-window -h
 bind - split-window -v
 
+# empty default window name
+bind-key c new-window -n ''
+
 # Moving between panes
 bind h select-pane -L
 bind j select-pane -D
