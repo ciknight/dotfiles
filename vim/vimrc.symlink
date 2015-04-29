@@ -65,7 +65,7 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
 " Insert -> normal mode
-imap jj <ESC>
+imap vv <ESC>
 
 " Window Switching
 map <c-j> <c-w>j
