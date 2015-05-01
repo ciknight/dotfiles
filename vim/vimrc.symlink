@@ -65,7 +65,10 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
 " Insert -> normal mode
-imap vv <ESC>
+imap jj <ESC>
+
+" make 'delete' work better
+set backspace+=indent,eol,start
 
 " Window Switching
 map <c-j> <c-w>j
@@ -103,7 +106,7 @@ let g:miniBufExplorerAutoStart = 0
 let g:pymode = 1
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
-let g:pymode_rope_completion_bind = '<tab>'
+" let g:pymode_rope_completion_bind = '<tab>'
 let g:pymode_motion = 1
 
 " emmet ... wtf why no work?
