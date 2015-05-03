@@ -84,3 +84,6 @@
 [submodule "slimv"]
 	path = slimv
 	url = https://github.com/kovisoft/slimv
+[submodule "vim/bundle/slimv"]
+	path = vim/bundle/slimv
+	url = https://github.com/kovisoft/slimv
