@@ -29,9 +29,8 @@ Notes
 
 Navigation
 -----
-* `<C-e>`, `<C-y>` scroll up, down
-* `<C-u>`, `<C-d>` scroll 1/2 page down, up
-* `<C-f>`, `<C-b>` scroll 1 page up, down
+* `<C-d>` scroll down 1 page
+* `<C-u>` scroll up 1 page
 
 Python
 ------
@@ -110,11 +109,11 @@ Nerd Tree
 * X              Recursively close all children of the current node
 * e              Edit the current dir
 
-
 Surround
 ========
 * block select + `S{` to wrap block in curlies
 
-Helpful Links
-=============
-* http://tnerual.eriogerg.free.fr/vimqrc.html
+Ctrlp
+=====
+* with ctrlp open, hit <F5> to update the cache (so new files show up)
+
