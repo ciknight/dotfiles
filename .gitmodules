@@ -81,3 +81,6 @@
 [submodule "vim/bundle/tern"]
 	path = vim/bundle/tern
 	url = https://github.com/marijnh/tern_for_vim.git
+[submodule "slimv"]
+	path = slimv
+	url = https://github.com/kovisoft/slimv
