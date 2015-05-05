@@ -28,7 +28,7 @@ Notes
 =====
 
 Navigation
------
+----
 * `<C-d>` scroll down 1 page
 * `<C-u>` scroll up 1 page
 
