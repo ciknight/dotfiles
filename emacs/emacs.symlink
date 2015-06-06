@@ -1,6 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/solarized-emacs")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/solarized-emacs")
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 (set-default-font "Inconsolata")
 (tool-bar-mode -1)
 (server-mode t)
@@ -84,3 +84,23 @@
 
 ;; justin
 (scroll-bar-mode -1)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(setq evil-leader/in-all-states 1)
+
+(require 'evil-search-highlight-persist)
+(global-evil-search-highlight-persist t)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
+(package-initialize)
+(elpy-enable)
+;; (elpy-use-ipython)
+(setq elpy-rpc-python-command "python3") 
+
+
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)

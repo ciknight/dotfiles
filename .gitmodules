@@ -31,7 +31,7 @@
 	url = https://github.com/davidhalter/jedi-vim
 [submodule "vim/bundle/vim-virtualenv"]
 	path = vim/bundle/vim-virtualenv
-	url = https://github.com/jmcantrell/vim-virtualenv.git
+	url = https://github.com/jmcantrell/vim-virtualenv
     ignore = dirty
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
@@ -77,7 +77,7 @@
 	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround
 [submodule "vim/bundle/tern"]
 	path = vim/bundle/tern
 	url = https://github.com/marijnh/tern_for_vim.git
@@ -87,3 +87,6 @@
 [submodule "vim/bundle/slimv"]
 	path = vim/bundle/slimv
 	url = https://github.com/kovisoft/slimv
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
