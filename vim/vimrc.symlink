@@ -126,3 +126,14 @@ map <leader>L :PymodeLintAuto<cr>
 " let g:user_emmet_leader_key='<C-Space>'
 " let g:user_emmet_leader_key='<C-Z>'
 
+" changes cursor shape in tmux ... would love to have it change color ...
+"if exists('$TMUX')
+  ""let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  ""let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"else
+  ""let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  ""let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  "let &t_SI = "\<Esc>]50;orange\x7"
+  "" use a red cursor otherwise
+  "let &t_EI = "\<Esc>]50;red\x7"
+"endif
