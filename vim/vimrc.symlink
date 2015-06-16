@@ -20,9 +20,9 @@ set foldmethod=indent
 set foldlevel=99
 
 " language specific
-"autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType htmldjango set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+autocmd FileType htmldjango :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
