@@ -9,7 +9,7 @@
 	url = https://github.com/mitechie/pyflakes-pathogen.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
@@ -90,3 +90,9 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/vim-wakatime"]
+	path = vim/bundle/vim-wakatime
+	url = https://github.com/wakatime/vim-wakatime
+[submodule "vim/bundle/emmet-vim"]
+	path = vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git

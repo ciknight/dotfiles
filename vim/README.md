@@ -90,6 +90,7 @@ Python-Mode
 -----------
 * `<leader>r` run python code
 * `<leader>b` add/remove breakpoints
+* `<C-c>g` jumps to definition
 
 Nerd Tree
 ---------
@@ -116,4 +117,15 @@ Surround
 Ctrlp
 =====
 * with ctrlp open, hit <F5> to update the cache (so new files show up)
+
+Trivial
+=======
+* `,bq` closes buffer
+* `,m` toggles relative vs absolute line numbers
+* `,ev` edit vimrc in a split tab
+* `*` highlights all occurence of word.
+* `g~` shifts case
+
+
+
 

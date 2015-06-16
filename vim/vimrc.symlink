@@ -20,8 +20,9 @@ set foldmethod=indent
 set foldlevel=99
 
 " language specific
-autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+"autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType htmldjango set omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -41,13 +42,42 @@ set hlsearch
 
 syntax on
 
-" Solarized colors
+" Dark Solarized colors
 syntax enable
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+"highlight clear SignColumn
+"set t_Co=256
+
+
+" Tomorrow Night Solors
+" ---------------------
+
 set background=dark
-colorscheme solarized
-highlight clear SignColumn
-set t_Co=256
+colorscheme Tomorrow-Night
+
+" Tomorrow Night Colors
+let s:foreground = "#c5c8c6"
+let s:background = "#1d1f21"
+let s:selection  = "#373b41"
+let s:line       = "#282a2e"
+let s:comment    = "#969896"
+let s:red        = "#cc6666"
+let s:orange     = "#de935f"
+let s:yellow     = "#f0c674"
+let s:green      = "#b5bd68"
+let s:aqua       = "#8abeb7"
+let s:blue       = "#81a2be"
+let s:purple     = "#b294bb"
+let s:window     = "#4d5057"
+
+" Custom Colors
+let s:fadedorange = "#5d4535"
+
+" ???
+highlight TabLineSel guifg=orange
+highlight JSHintError ctermbg=88 guibg=s:fadedorange
 
 " relative line numbers
 set number
@@ -88,6 +118,7 @@ function! ChangePaste(type, ...)
 endfunction
 
 " Better copy & paste
+" FIXME: how to leave paste mode after pasting happens?
 set pastetoggle=<F2>
 set clipboard=unnamed
 
@@ -100,10 +131,12 @@ set clipboard=unnamed
 """""""""""""""""
 
 " NERD Tree file browser
-map <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
 
 " Ack fuzzy text search
-nmap <leader>a <Esc>:Ack!
+nnoremap <leader>a <Esc>:Ack!
 
 " minibufexpl
 map <Leader>t :MBEToggle<cr>
@@ -117,6 +150,13 @@ let g:pymode_lint_on_write = 0
 let g:pymode_motion = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_run_bind = '<leader>r'
+let g:pymode_rope_rename_bind = '<leader>pr'
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_rope_goto_definition_cmd = 'e'
+"let g:pymode_rope_goto_definition_bind = '<leader>g'
+let g:pymode_options_max_line_length = 105
+let g:pymode_lint_options_pep8 = 
+    \ {'max_line_length': g:pymode_options_max_line_length}
 
 map <leader>l :PymodeLint<cr>
 map <leader>L :PymodeLintAuto<cr>
@@ -126,14 +166,63 @@ map <leader>L :PymodeLintAuto<cr>
 " let g:user_emmet_leader_key='<C-Space>'
 " let g:user_emmet_leader_key='<C-Z>'
 
-" changes cursor shape in tmux ... would love to have it change color ...
-"if exists('$TMUX')
-  ""let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  ""let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-"else
-  ""let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  ""let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  "let &t_SI = "\<Esc>]50;orange\x7"
-  "" use a red cursor otherwise
-  "let &t_EI = "\<Esc>]50;red\x7"
-"endif
+" toggle between number and relative number on ,m
+" bit of a hack
+nnoremap <leader>m :call ToggleRelativeAbsoluteNumber()<CR>
+function! ToggleRelativeAbsoluteNumber()
+  if &relativenumber
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunction
+
+" ; is an alias for :
+nnoremap ; :
+
+" Thank you vi
+nnoremap Y y$
+
+" map :bq to ,bd which comes from kwbdi to close a buffer
+cnoreabbr <expr> bq 'normal <leader>bd<CR>'
+
+" hide matches on <leader>space
+nnoremap <leader><space> :nohlsearch<cr>
+
+" Autoresize windows
+autocmd VimResized * :wincmd =
+
+" split edit vimrc
+nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
+
+
+" Neovim Terminal Mode
+" ------------------------------------------------------------------------------
+
+let g:terminal_color_0  = '#2e3436'
+let g:terminal_color_1  = '#cc0000'
+let g:terminal_color_2  = '#4e9a06'
+let g:terminal_color_3  = '#c4a000'
+let g:terminal_color_4  = '#3465a4'
+let g:terminal_color_5  = '#75507b'
+let g:terminal_color_6  = '#0b939b'
+let g:terminal_color_7  = '#d3d7cf'
+let g:terminal_color_8  = s:red
+let g:terminal_color_9  = s:yellow
+let g:terminal_color_10 = s:orange
+let g:terminal_color_11 = s:green
+let g:terminal_color_12 = s:aqua
+let g:terminal_color_13 = s:blue
+let g:terminal_color_14 = s:purple
+let g:terminal_color_15 = s:window
+
+if has('nvim')
+    " backtick sends true escape
+    tnoremap ` <Esc>
+    " terminal mode escapes just like insert mode
+    tnoremap <Esc> <c-\><c-n>
+    au WinEnter *pid:* call feedkeys('i')
+endif
+
+tnoremap jj <C-\><C-n>
+
