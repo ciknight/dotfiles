@@ -227,3 +227,18 @@ endif
 
 tnoremap jj <C-\><C-n>
 
+" Better Help Windows
+function! OpenHelpInCurrentWindow(topic) 
+  view $VIMRUNTIME/doc/help.txt 
+  setl filetype=help 
+  setl buftype=help 
+  setl nomodifiable 
+  exe 'keepjumps help ' . a:topic 
+endfunction 
+
+command! -nargs=? -complete=help Help call OpenHelpInCurrentWindow(<q-args>) 
+
+nnoremap <silent> <leader>h :Help 
+
+
+
