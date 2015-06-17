@@ -1,6 +1,6 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
 	url = https://github.com/wincent/Command-T.git
@@ -56,7 +56,7 @@
 	url = https://github.com/mattn/emmet-vim.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe
@@ -71,7 +71,7 @@
 	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
+	url = https://github.com/honza/vim-snippets
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git

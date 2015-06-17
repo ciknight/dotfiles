@@ -46,7 +46,7 @@ syntax on
 syntax enable
 "let g:solarized_termcolors=256
 "set background=dark
-"colorscheme solarized
+"colorscheme solarizedf
 "highlight clear SignColumn
 "set t_Co=256
 
@@ -155,6 +155,7 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_rope_goto_definition_cmd = 'e'
 "let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_options_max_line_length = 105
+"let g:pymode_lint_ignore="W690"
 let g:pymode_lint_options_pep8 = 
     \ {'max_line_length': g:pymode_options_max_line_length}
 

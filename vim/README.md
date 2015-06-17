@@ -125,7 +125,16 @@ Trivial
 * `,ev` edit vimrc in a split tab
 * `*` highlights all occurence of word.
 * `g~` shifts case
+* `di"` deletes inside pair of quotes
+* `:UltiSnipsEdit` allows you to edit snippets for language you're currently editing
+* `<C-w HJKL>` swaps windows
 
+Neovim
+======
+* install neovim plugin
 
+TODO:
+=====
+* autopep8 shouldn't change absolute imports to relative imports
 
 
