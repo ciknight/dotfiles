@@ -90,6 +90,7 @@ set relativenumber
 
 " leader key
 let mapleader = ','
+let maplocalleader = "\\"
 
 " Inserting empty lines
 nnoremap <Enter> o<ESC>
@@ -200,7 +201,7 @@ autocmd VimResized * :wincmd =
 
 " split edit vimrc
 nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
-
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Neovim Terminal Mode
 " ------------------------------------------------------------------------------
@@ -248,3 +249,5 @@ nnoremap <silent> <leader>h :Help
 " Fugitive
 nnoremap <leader>gs :Gstatus
 
+" Temporary
+inoremap <esc> <nop>
