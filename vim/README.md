@@ -118,7 +118,7 @@ Ctrlp
 =====
 * with ctrlp open, hit <F5> to update the cache (so new files show up)
 
-Trivial
+General
 =======
 * `,bq` closes buffer
 * `,m` toggles relative vs absolute line numbers
@@ -128,6 +128,7 @@ Trivial
 * `di"` deletes inside pair of quotes
 * `:UltiSnipsEdit` allows you to edit snippets for language you're currently editing
 * `<C-w HJKL>` swaps windows
+* `viw` block selects word where cursor lives
 
 Neovim
 ======

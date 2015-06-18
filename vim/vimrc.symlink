@@ -26,6 +26,7 @@ autocmd FileType htmldjango :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML file
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -91,27 +92,31 @@ set relativenumber
 let mapleader = ','
 
 " Inserting empty lines
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
+nnoremap <Enter> o<ESC>
+nnoremap <S-Enter> O<ESC>
 
 " Insert -> normal mode
-imap jj <ESC>
+inoremap jj <ESC>
 
 " make 'delete' work better
 set backspace+=indent,eol,start
 
 " Window Switching
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
 " allow quit/save via single keypress
-map <leader>q :q<CR>
-map <leader>w :w<CR>
+noremap <leader>q :q<CR>
+noremap <leader>w :w<CR>
+
+" uppercase current word
+inoremap <c-u> <Right><esc>g~iwi
+nnoremap <c-u> g~iw
 
 " replace some stuff with contents of register
-nmap <silent> cp :set opfunc=ChangePaste<CR>g@
+nnoremap <silent> cp :set opfunc=ChangePaste<CR>g@
 function! ChangePaste(type, ...)
     silent exe "normal! `[v`]\"_c"
     silent exe "normal! p"
@@ -139,7 +144,7 @@ let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
 nnoremap <leader>a <Esc>:Ack!
 
 " minibufexpl
-map <Leader>t :MBEToggle<cr>
+noremap <Leader>t :MBEToggle<cr>
 let g:miniBufExplorerAutoStart = 0
 
 " Python-Mode
@@ -159,8 +164,8 @@ let g:pymode_options_max_line_length = 105
 let g:pymode_lint_options_pep8 = 
     \ {'max_line_length': g:pymode_options_max_line_length}
 
-map <leader>l :PymodeLint<cr>
-map <leader>L :PymodeLintAuto<cr>
+noremap <leader>l :PymodeLint<cr>
+noremap <leader>L :PymodeLintAuto<cr>
 
 
 " emmet ... wtf why no work?
@@ -240,5 +245,6 @@ command! -nargs=? -complete=help Help call OpenHelpInCurrentWindow(<q-args>)
 
 nnoremap <silent> <leader>h :Help 
 
-
+" Fugitive
+nnoremap <leader>gs :Gstatus
 
