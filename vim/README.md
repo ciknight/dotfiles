@@ -137,5 +137,5 @@ Neovim
 TODO:
 =====
 * autopep8 shouldn't change absolute imports to relative imports
-
+* figure out how to use ipdb in python-mode
 

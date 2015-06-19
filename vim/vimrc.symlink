@@ -96,6 +96,10 @@ let maplocalleader = "\\"
 nnoremap <Enter> o<ESC>
 nnoremap <S-Enter> O<ESC>
 
+" Navigate buffers
+map <F2> :bprevious<CR>
+map <F3> :bnext<CR>
+
 " Insert -> normal mode
 inoremap jj <ESC>
 
@@ -164,9 +168,11 @@ let g:pymode_options_max_line_length = 105
 "let g:pymode_lint_ignore="W690"
 let g:pymode_lint_options_pep8 = 
     \ {'max_line_length': g:pymode_options_max_line_length}
+let g:pymode_virtualenv = 0
 
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
+noremap <leader>i :PymodeRopeAutoImport<cr>
 
 
 " emmet ... wtf why no work?
@@ -201,6 +207,7 @@ autocmd VimResized * :wincmd =
 
 " split edit vimrc
 nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
+nnoremap <leader>er <C-w><C-s><C-l>:e ~/.dotfiles/vim/README.md<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Neovim Terminal Mode
@@ -251,3 +258,30 @@ nnoremap <leader>gs :Gstatus
 
 " Temporary
 inoremap <esc> <nop>
+
+" Utility for swapping windows
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf 
+endfunction
+
+nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
+nmap <silent> <leader>pw :call DoWindowSwap()<CR>
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
