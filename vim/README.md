@@ -129,6 +129,7 @@ General
 * `:UltiSnipsEdit` allows you to edit snippets for language you're currently editing
 * `<C-w HJKL>` swaps windows
 * `viw` block selects word where cursor lives
+* `zz` center the cursor
 
 Neovim
 ======
