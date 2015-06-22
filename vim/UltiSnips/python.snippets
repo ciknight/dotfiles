@@ -26,8 +26,11 @@ Description: ${0}
 """
 endsnippet
 
-
-
+snippet "
+"""
+${0:doc}
+"""
+endsnippet
 
 #snippet wh
 	#while ${1:condition}:
@@ -158,9 +161,6 @@ endsnippet
 	#import pudb; pudb.set_trace()
 #snippet pprint
 	#import pprint; pprint.pprint(${1})
-#snippet "
-	#"""${0:doc}
-	#"""
 ## assertions
 #snippet a=
 	#self.assertEqual(${0}, ${1})

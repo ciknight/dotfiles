@@ -1,3 +1,5 @@
+"""" Setup """ {{{
+
 " mouse mode
 set mouse=n  "doesn't work
 
@@ -18,39 +20,59 @@ set shiftwidth=4
 set expandtab
 set foldmethod=indent
 set foldlevel=99
+set hlsearch
 
-" language specific
-autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-autocmd FileType htmldjango :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+" relative line numbers
+set number
+set relativenumber
+
+" Auto Commands {{{
+"""""""""""""""
+augroup filetype_html
+    autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+augroup END
+augroup filetype_htmldjango
+    autocmd FileType htmldjango :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+augroup END
+    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+augroup filetype_ruby
+    autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+augroup END
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup filetype_yaml
+    autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
 
 " Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+augroup write_vimrc
+    autocmd! bufwritepost .vimrc source %
+augroup END
 
-" default directory for custom snippets
-let g:snippets_dir = "~/.vim/snippets"
+" Code folding for vim files
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
-" search
-set hlsearch
-    
-""""""""""""""""""""
-"""" Appearance """"
-""""""""""""""""""""
+" Autoresize windows
+augroup resize_vim
+    autocmd VimResized * :wincmd =
+augroup END
+
+" }}}
+
+"""" Appearance """" {{{
 
 syntax on
+syntax enable
 
 " Dark Solarized colors
-syntax enable
+" ---------------------
 "let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarizedf
 "highlight clear SignColumn
 "set t_Co=256
-
 
 " Tomorrow Night Solors
 " ---------------------
@@ -58,7 +80,6 @@ syntax enable
 set background=dark
 colorscheme Tomorrow-Night
 
-" Tomorrow Night Colors
 let s:foreground = "#c5c8c6"
 let s:background = "#1d1f21"
 let s:selection  = "#373b41"
@@ -80,13 +101,10 @@ let s:fadedorange = "#5d4535"
 highlight TabLineSel guifg=orange
 highlight JSHintError ctermbg=88 guibg=s:fadedorange
 
-" relative line numbers
-set number
-set relativenumber
 
-"""""""""""""""""""
-"""" Shortcuts """"
-"""""""""""""""""""
+" }}}
+
+"""" Shortcuts """" {{{
 
 " leader key
 let mapleader = ','
@@ -102,6 +120,14 @@ map <F3> :bnext<CR>
 
 " Insert -> normal mode
 inoremap jj <ESC>
+
+" search
+nnoremap <leader>c :nohlsearch<CR>
+    
+" split edit vimrc
+nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
+nnoremap <leader>er <C-w><C-s><C-l>:e ~/.dotfiles/vim/README.md<CR>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " make 'delete' work better
 set backspace+=indent,eol,start
@@ -128,29 +154,30 @@ function! ChangePaste(type, ...)
 endfunction
 
 " Better copy & paste
-" FIXME: how to leave paste mode after pasting happens?
+" FIXME: how to automatically leave paste mode after pasting happens?
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-" linting
-" let g:pyflakes_use_quickfix = 0
-" let g:pep8_map='<leader>8'
+" ; is an alias for :
+nnoremap ; :
 
-"""""""""""""""""
-"""" Plugins """"
-"""""""""""""""""
+" Thank you vi
+nnoremap Y y$
+
+" map :bq to ,bd to close a buffer
+cnoreabbr <expr> bq 'normal <leader>bd<CR>'
+
+" }}}
+
+"""" Plugins """" {{{
 
 " NERD Tree file browser
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
-let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
+let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
 
 " Ack fuzzy text search
 nnoremap <leader>a <Esc>:Ack!
-
-" minibufexpl
-noremap <Leader>t :MBEToggle<cr>
-let g:miniBufExplorerAutoStart = 0
 
 " Python-Mode
 let g:pymode = 1
@@ -174,45 +201,25 @@ noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
 
+" Airline
+let g:airline#extensions#tabline#enabled = 1 
+let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
 
-" emmet ... wtf why no work?
-" let g:user_emmet_leader_key='<C-Space>'
-" let g:user_emmet_leader_key='<C-Z>'
+"" Ultisnips
+let g:UltiSnipsUsePythonVersion=3
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" toggle between number and relative number on ,m
-" bit of a hack
-nnoremap <leader>m :call ToggleRelativeAbsoluteNumber()<CR>
-function! ToggleRelativeAbsoluteNumber()
-  if &relativenumber
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunction
+" Fugitive
+nnoremap <leader>gs :Gstatus
 
-" ; is an alias for :
-nnoremap ; :
+" }}}
 
-" Thank you vi
-nnoremap Y y$
+"""" Neovim """" {{{
 
-" map :bq to ,bd which comes from kwbdi to close a buffer
-cnoreabbr <expr> bq 'normal <leader>bd<CR>'
-
-" hide matches on <leader>space
-nnoremap <leader><space> :nohlsearch<cr>
-
-" Autoresize windows
-autocmd VimResized * :wincmd =
-
-" split edit vimrc
-nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
-nnoremap <leader>er <C-w><C-s><C-l>:e ~/.dotfiles/vim/README.md<CR>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Neovim Terminal Mode
-" ------------------------------------------------------------------------------
-
+" Terminal Mode
 let g:terminal_color_0  = '#2e3436'
 let g:terminal_color_1  = '#cc0000'
 let g:terminal_color_2  = '#4e9a06'
@@ -234,11 +241,23 @@ if has('nvim')
     " backtick sends true escape
     tnoremap ` <Esc>
     " terminal mode escapes just like insert mode
-    tnoremap <Esc> <c-\><c-n>
+    tnoremap jj <C-\><C-n>
     au WinEnter *pid:* call feedkeys('i')
 endif
 
-tnoremap jj <C-\><C-n>
+" }}}
+
+""" Functions """ {{{
+
+" toggle between number and relative number on ,m ... bit of a hack
+nnoremap <leader>m :call ToggleRelativeAbsoluteNumber()<CR>
+function! ToggleRelativeAbsoluteNumber()
+  if &relativenumber
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunction
 
 " Better Help Windows
 function! OpenHelpInCurrentWindow(topic) 
@@ -250,14 +269,7 @@ function! OpenHelpInCurrentWindow(topic)
 endfunction 
 
 command! -nargs=? -complete=help Help call OpenHelpInCurrentWindow(<q-args>) 
-
 nnoremap <silent> <leader>h :Help 
-
-" Fugitive
-nnoremap <leader>gs :Gstatus
-
-" Temporary
-inoremap <esc> <nop>
 
 " Utility for swapping windows
 function! MarkWindowSwap()
@@ -282,6 +294,34 @@ endfunction
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
 nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
+" }}}
+
+"""" MY CUSTOM SHIT """" {{{
+
+"""Operator Pending Mode"""
+
+" front of next parenthesis
+onoremap f( :<c-u>normal! f(bve<cr>
+" inside next parenthesis
+onoremap in( :<c-u>normal! f(vi(<cr>
+" inside last parenthesis
+onoremap il( :<c-u>normal! F)vi(<cr>
+
+" front of next square bracket
+onoremap f[ :<c-u>normal! f[bve<cr>
+" inside next square bracket
+onoremap in[ :<c-u>normal! f[vi[<cr>
+" inside last square bracket
+onoremap il[ :<c-u>normal! F]vi[<cr>
+
+" Markdown Headers -- how to include "----"?
+onoremap ih :<c-u>execute "normal! ?^[=]\{2,}$\r:nohlsearch\rkvg_"<cr>
+
+inoremap <esc> <nop>
+nnoremap : <nop>
+augroup python_shortcuts
+    autocmd FileType python :iabbrev rr return
+    autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
+augroup END
+
+" }}}
