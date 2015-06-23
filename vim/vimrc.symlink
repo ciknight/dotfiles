@@ -196,6 +196,7 @@ let g:pymode_options_max_line_length = 105
 let g:pymode_lint_options_pep8 = 
     \ {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_virtualenv = 0
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX breakpoint'
 
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
