@@ -4,10 +4,10 @@
 set mouse=n  "doesn't work
 
 " Pathogen 
-filetype off
-set runtimepath+="~/.dotfiles/new-vim/autoload"  " Load Pathogen
-call pathogen#infect()
-call pathogen#helptags()
+"filetype off
+"set runtimepath+="~/.dotfiles/new-vim/autoload"  " Load Pathogen
+"call pathogen#infect()
+"call pathogen#helptags()
 
 " turn filetype on
 filetype on
