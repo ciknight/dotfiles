@@ -11,7 +11,22 @@ set mouse=n  "doesn't work
 
 " Plug
 call plug#begin('~/.vim/plugins_by_vimplug')
-"Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'junegunn/fzf'
+Plug 'rking/ag.vim'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'mtth/scratch.vim'
+Plug 'klen/python-mode'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mattn/emmet-vim'
+Plug 'kchmck/vim-coffee-script'
+"Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " turn filetype on
@@ -181,8 +196,8 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
 
-" Ack fuzzy text search
-nnoremap <leader>a <Esc>:Ack!
+" Ag fuzzy text search
+nnoremap <leader>a <Esc>:Ag!
 
 " Python-Mode
 let g:pymode = 1
@@ -219,7 +234,7 @@ let g:UltiSnipsListSnippets="<c-tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Fugitive
-nnoremap <leader>gs :Gstatus
+nnoremap <leader>gs :Gstatus<cr>
 
 " }}}
 
