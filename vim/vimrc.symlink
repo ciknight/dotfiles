@@ -11,21 +11,30 @@ set mouse=n  "doesn't work
 
 " Plug
 call plug#begin('~/.vim/plugins_by_vimplug')
+" General
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'bling/vim-airline'
 Plug 'junegunn/fzf'
+Plug 'junegunn/goyo.vim'
+Plug 'bling/vim-airline'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
+" Language-specific
 Plug 'klen/python-mode'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
+" Testing
+Plug 'sjl/gundo.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'majutsushi/tagbar'
+Plug 'gregsexton/gitv'
+Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
