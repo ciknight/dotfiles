@@ -9,6 +9,11 @@ set mouse=n  "doesn't work
 "call pathogen#infect()
 "call pathogen#helptags()
 
+" Plug
+call plug#begin('~/.vim/plugins_by_vimplug')
+"Plug 'majutsushi/tagbar'
+call plug#end()
+
 " turn filetype on
 filetype on
 filetype plugin indent on    " enable loading indent file for filetype
