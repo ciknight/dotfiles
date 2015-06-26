@@ -10,11 +10,11 @@ def walk_and_save(base_path, verbose=False):
                 filename = '.' + name.rsplit('.', 1)[0]
                 dst = os.path.join(home_dir, filename)
                 src = os.path.join(root, name)
-                if not os.path.exists(dst):
-                    os.symlink(src, dst)
-                if os.path.islink(dst):
-                    os.remove(dst)
-                    os.symlink(src, dst)
+                try:
+                    os.remove(filename)
+                except OSError:
+                    pass
+                os.symlink(src, dst)
 
 if __name__ == '__main__':
     file = sys.argv[0]

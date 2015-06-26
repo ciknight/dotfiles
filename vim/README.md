@@ -130,6 +130,7 @@ General
 * `<C-w HJKL>` swaps windows
 * `viw` block selects word where cursor lives
 * `zz` center the cursor
+* `,th` to toggle search highlighting
 
 Neovim
 ======
@@ -140,3 +141,6 @@ TODO:
 * autopep8 shouldn't change absolute imports to relative imports
 * figure out how to use ipdb in python-mode
 * customize git-gutter colors
+* change "$PLUG_HOME"
+* I'm ignoring ALL "line too long errors" in pymode ... somehow failling to do the custom pymode config
+* Figure out ideavimrc?

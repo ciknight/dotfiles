@@ -3,26 +3,22 @@
 " mouse mode
 set mouse=n  "doesn't work
 
-" Pathogen 
-"filetype off
-"set runtimepath+="~/.dotfiles/new-vim/autoload"  " Load Pathogen
-"call pathogen#infect()
-"call pathogen#helptags()
-
 " Plug
-call plug#begin('~/.vim/plugins_by_vimplug')
+call plug#begin('~/.vim/plugs')
 " General
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf'
-Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"Plug 'junegunn/goyo.vim'
 Plug 'bling/vim-airline'
+Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
+Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
 " Language-specific
 Plug 'klen/python-mode'
 Plug 'jmcantrell/vim-virtualenv'
@@ -30,11 +26,11 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 " Testing
-Plug 'sjl/gundo.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'majutsushi/tagbar'
-Plug 'gregsexton/gitv'
-Plug 'Glench/Vim-Jinja2-Syntax'
+"Plug 'sjl/gundo.vim'
+"Plug 'Yggdroot/indentLine'
+"Plug 'majutsushi/tagbar'
+"Plug 'gregsexton/gitv'
+"Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
@@ -107,8 +103,23 @@ syntax enable
 " ---------------------
 
 set background=dark
-colorscheme Tomorrow-Night
 
+"colorscheme Tomorrow-Night-Eighties
+"let s:foreground = "#cccccc"
+"let s:background = "#2d2d2d"
+"let s:selection = "#515151"
+"let s:line = "#393939"
+"let s:comment = "#999999"
+"let s:red = "#f2777a"
+"let s:orange = "#f99157"
+"let s:yellow = "#ffcc66"
+"let s:green = "#99cc99"
+"let s:aqua = "#009999"
+"let s:blue = "#99cccc"
+"let s:purple = "#cc99cc"
+"let s:window = "#4d5057"
+
+colorscheme Tomorrow-Night
 let s:foreground = "#c5c8c6"
 let s:background = "#1d1f21"
 let s:selection  = "#373b41"
@@ -117,14 +128,15 @@ let s:comment    = "#969896"
 let s:red        = "#cc6666"
 let s:orange     = "#de935f"
 let s:yellow     = "#f0c674"
-let s:green      = "#b5bd68"
+"let s:green      = "#b5bd68"    " modified!
+let s:green      = "#99cc99"
 let s:aqua       = "#8abeb7"
 let s:blue       = "#81a2be"
 let s:purple     = "#b294bb"
 let s:window     = "#4d5057"
 
 " Custom Colors
-let s:fadedorange = "#5d4535"
+"let s:fadedorange = "#5d4535"
 
 " ???
 highlight TabLineSel guifg=orange
@@ -151,8 +163,8 @@ map <F3> :bnext<CR>
 inoremap jj <ESC>
 
 " search
-nnoremap <leader>c :nohlsearch<CR>
-    
+nnoremap <leader>th :nohlsearch<CR>
+
 " split edit vimrc
 nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
 nnoremap <leader>er <C-w><C-s><C-l>:e ~/.dotfiles/vim/README.md<CR>
@@ -205,6 +217,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
 
+" fzf
+set runtimepath+=~/.fzf
+
 " Ag fuzzy text search
 nnoremap <leader>a <Esc>:Ag!
 
@@ -221,15 +236,29 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_rope_goto_definition_cmd = 'e'
 "let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_options_max_line_length = 105
-"let g:pymode_lint_ignore="W690"
-let g:pymode_lint_options_pep8 = 
-    \ {'max_line_length': g:pymode_options_max_line_length}
+let g:pymode_lint_ignore="E501"
+let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_virtualenv = 0
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX breakpoint'
 
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap <leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1 
@@ -244,6 +273,17 @@ let g:UltiSnipsListSnippets="<c-tab>"
 
 " Fugitive
 nnoremap <leader>gs :Gstatus<cr>
+
+" Fzf
+noremap <c-p> :FZF<cr>
+
+" IndentLine
+let g:indentLine_enabled=0  " is there a better way not to show tabs by default???
+let g:indentLine_leadingSpaceChar = '·'
+" toggle all, toggle spaces, toggle tabs
+nnoremap <leader>ta :LeadingSpaceToggle<cr>:IndentLinesToggle<cr> 
+nnoremap <leader>ts :LeadingSpaceToggle<cr>
+nnoremap <leader>tt :IndentLinesToggle<cr>
 
 " }}}
 

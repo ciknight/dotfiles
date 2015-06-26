@@ -5,4 +5,5 @@ idea/
 .ropeproject/
 *.swp
 
-vim/plugins_by_vimplug/
+vim/plugs/
+zsh/submodules/
