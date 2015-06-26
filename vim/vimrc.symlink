@@ -166,8 +166,9 @@ inoremap jj <ESC>
 nnoremap <leader>th :nohlsearch<CR>
 
 " split edit vimrc
+nnoremap <leader>eg <C-w><C-s><C-l>:e ~/.gitconfig<CR>
 nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
-nnoremap <leader>er <C-w><C-s><C-l>:e ~/.dotfiles/vim/README.md<CR>
+nnoremap <leader>er <C-w><C-s><C-l>:e ~/dotfiles/vim/README.md<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " make 'delete' work better
@@ -273,6 +274,7 @@ let g:UltiSnipsListSnippets="<c-tab>"
 
 " Fugitive
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
 
 " Fzf
 noremap <c-p> :FZF<cr>

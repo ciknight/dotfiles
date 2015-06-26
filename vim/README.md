@@ -144,3 +144,4 @@ TODO:
 * change "$PLUG_HOME"
 * I'm ignoring ALL "line too long errors" in pymode ... somehow failling to do the custom pymode config
 * Figure out ideavimrc?
+* `,gs` and ":Gstatus" isn't visible until typing starts
