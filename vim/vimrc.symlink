@@ -31,7 +31,8 @@ Plug 'kchmck/vim-coffee-script'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
 "Plug 'Glench/Vim-Jinja2-Syntax'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
+Plug 'marijnh/tern_for_vim'
 call plug#end()
 
 " turn filetype on
@@ -56,16 +57,26 @@ set relativenumber
 augroup filetype_html
     autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 augroup END
+
 augroup filetype_htmldjango
     autocmd FileType htmldjango :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 augroup END
-    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 augroup filetype_ruby
     autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 augroup END
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 augroup filetype_yaml
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
+
+augroup filetype_vim
     autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+
+augroup filetype_js
+    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
 augroup END
 
 " Automatic reloading of .vimrc
@@ -225,23 +236,24 @@ set runtimepath+=~/.fzf
 nnoremap <leader>a <Esc>:Ag!
 
 " Python-Mode
-let g:pymode = 1
 let g:pymode_python = 'python3'
-let g:pymode_lint_on_write = 0
-" let g:pymode_rope_completion_bind = '<tab>'
 let g:pymode_motion = 1
+let g:pymode_virtualenv = 0
+" Editing
 let g:pymode_doc_bind = 'K'
 let g:pymode_run_bind = '<leader>r'
-let g:pymode_rope_rename_bind = '<leader>pr'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-let g:pymode_rope_goto_definition_cmd = 'e'
-"let g:pymode_rope_goto_definition_bind = '<leader>g'
-let g:pymode_options_max_line_length = 105
-let g:pymode_lint_ignore="E501"
-let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
-let g:pymode_virtualenv = 0
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX breakpoint'
-
+" Lint
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_ignore="E501"
+let g:pymode_options_max_line_length = 105
+let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+" Rope
+let g:pymode_rope_completion = 0
+let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_rope_rename_bind = '<leader>pr'
+" Mappings
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
@@ -286,6 +298,10 @@ let g:indentLine_leadingSpaceChar = '·'
 nnoremap <leader>ta :LeadingSpaceToggle<cr>:IndentLinesToggle<cr> 
 nnoremap <leader>ts :LeadingSpaceToggle<cr>
 nnoremap <leader>tt :IndentLinesToggle<cr>
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " }}}
 
@@ -363,6 +379,7 @@ function! DeleteInactiveBufs()
     endfor
     echomsg nWipeouts . ' buffer(s) wiped out'
 endfunction
+nnoremap <leader>tb :call DeleteInactiveBufs()<cr>
 
 " Utility for swapping windows
 function! MarkWindowSwap()
