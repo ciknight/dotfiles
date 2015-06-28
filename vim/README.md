@@ -132,3 +132,5 @@ TODO:
 * I'm ignoring ALL "line too long errors" in pymode ... somehow failling to do the custom pymode config
 * Figure out ideavimrc?
 * `,gs` and ":Gstatus" isn't visible until typing starts
+* pymode
+    * I remapped `K` to do what `<C-c>d` did -- "pymode_rope_show_doc_bind"  ... jank

@@ -47,6 +47,7 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set hlsearch
+set laststatus=2                        " always show status line
 
 " relative line numbers
 set number
@@ -236,13 +237,14 @@ set runtimepath+=~/.fzf
 nnoremap <leader>a <Esc>:Ag!
 
 " Python-Mode
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python'
 let g:pymode_motion = 1
 let g:pymode_virtualenv = 0
 " Editing
 let g:pymode_doc_bind = 'K'
 let g:pymode_run_bind = '<leader>r'
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX breakpoint'
+let g:pymode_rope_show_doc_bind = 'K'  " overwrites the default doc showing ...
 " Lint
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_ignore="E501"
@@ -257,6 +259,12 @@ let g:pymode_rope_rename_bind = '<leader>pr'
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
+
+" Vim-Virtualenv
+"let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
+
+" Scratch
+nnoremap <leader>s :Scratch<cr>
 
 " The Silver Searcher
 if executable('ag')
@@ -279,8 +287,15 @@ let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
 
 "" Ultisnips
 let g:UltiSnipsUsePythonVersion=3
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsListSnippets="<c-tab>"
+
+let g:UltiSnipsExpandTrigger       = "<c-s>"
+let g:UltiSnipsListSnippets        = "<c-m-s>"
+let g:UltiSnipsJumpForwardTrigger  = "<right>"
+let g:UltiSnipsJumpBackwardTrigger = "<left>"
+
+nnoremap <leader>es :UltiSnipsEdit<cr>
 "let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
