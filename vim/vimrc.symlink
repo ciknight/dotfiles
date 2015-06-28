@@ -31,7 +31,8 @@ Plug 'kchmck/vim-coffee-script'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
 "Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'marijnh/tern_for_vim'
 call plug#end()
 
@@ -284,20 +285,22 @@ nnoremap <leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Airline
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
+let g:airline#extensions#tabline#fnamemod = ':t'        " Just show the filename (no path) in the tab
 
 "" Ultisnips
 let g:UltiSnipsUsePythonVersion=3
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsListSnippets="<c-tab>"
 
-let g:UltiSnipsExpandTrigger       = "<c-s>"
-let g:UltiSnipsListSnippets        = "<c-m-s>"
-let g:UltiSnipsJumpForwardTrigger  = "<right>"
-let g:UltiSnipsJumpBackwardTrigger = "<left>"
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 nnoremap <leader>es :UltiSnipsEdit<cr>
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Fugitive
 nnoremap <leader>gs :Gstatus<cr>
