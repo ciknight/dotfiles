@@ -1,0 +1,83 @@
+# courtesy of https://github.com/illarionvk/liquid-ultisnips/blob/master/liquid.snippets
+
+# Generic Tags
+snippet %
+{% ${1} %}${2}
+endsnippet
+
+snippet %%
+{% ${1:tag_name} %}
+	${2}
+{% end$1 %}
+endsnippet
+
+snippet {
+{{ ${1} }}${2}
+endsnippet
+
+# Template Tags
+
+# Enter visual mode, press <tab>, insert #, press <tab> again
+snippet #
+{% comment %}
+	${VISUAL}${1}
+{% endcomment %}
+endsnippet
+
+snippet comment
+{% comment %}
+	${1}
+{% endcomment %}
+endsnippet
+
+snippet for
+{% for ${1} in ${2} %}
+	${3}
+{% endfor %}
+endsnippet
+
+snippet if
+{% if ${1} %}
+	${2}
+{% endif %}
+endsnippet
+
+snippet ife
+{% if ${1} %}
+	${2}
+{% else %}
+	${3}
+{% endif %}
+endsnippet
+
+snippet el
+{% else %}
+	${1}
+endsnippet
+
+snippet inc
+{% include ${1} %}
+endsnippet
+
+# Jekyll-specific snippets
+snippet hl
+{% highlight ${1} %}
+	${VISUAL}${2}
+{% endhighlight %}
+endsnippet
+
+# vim:ft=snippets:
+
+snippet head
+---
+layout: default
+title: ${1}
+date: `!v strftime("%y-%m-%d")`
+categories: ${2}
+---
+${6}
+endsnippet
+
+snippet date "insert current date in YYYY-MM-DD format"
+`!v strftime("%y-%m-%d")`
+endsnippet
