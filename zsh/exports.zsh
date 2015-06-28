@@ -9,3 +9,8 @@ export NVIM_LISTEN_ADDRESS=/tmp/neovim/neovim
 
 export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
+
+# boot2docker
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/justin/.boot2docker/certs/boot2docker-vm
