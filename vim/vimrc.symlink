@@ -1,9 +1,4 @@
-"""" Setup """ {{{
-
-" mouse mode
-set mouse=n  "doesn't work
-
-" Plug
+" Plug {{{
 call plug#begin('~/.vim/plugs')
 " General
 Plug 'scrooloose/nerdtree'
@@ -31,10 +26,16 @@ Plug 'kchmck/vim-coffee-script'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
 "Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'marijnh/tern_for_vim'
 call plug#end()
+" }}}
+
+" Misc {{{
+" mouse mode
+set mouse=n  "doesn't work
 
 " turn filetype on
 filetype on
@@ -53,6 +54,7 @@ set laststatus=2                        " always show status line
 " relative line numbers
 set number
 set relativenumber
+" }}}
 
 " Auto Commands {{{
 """""""""""""""
@@ -99,7 +101,7 @@ augroup END
 
 " }}}
 
-"""" Appearance """" {{{
+" Appearance {{{
 
 syntax on
 syntax enable
@@ -117,36 +119,36 @@ syntax enable
 
 set background=dark
 
-"colorscheme Tomorrow-Night-Eighties
-"let s:foreground = "#cccccc"
-"let s:background = "#2d2d2d"
-"let s:selection = "#515151"
-"let s:line = "#393939"
-"let s:comment = "#999999"
-"let s:red = "#f2777a"
-"let s:orange = "#f99157"
-"let s:yellow = "#ffcc66"
-"let s:green = "#99cc99"
-"let s:aqua = "#009999"
-"let s:blue = "#99cccc"
-"let s:purple = "#cc99cc"
-"let s:window = "#4d5057"
+colorscheme Tomorrow-Night-Eighties
+let s:foreground = "#cccccc"
+let s:background = "#2d2d2d"
+let s:selection = "#515151"
+let s:line = "#393939"
+let s:comment = "#999999"
+let s:red = "#f2777a"
+let s:orange = "#f99157"
+let s:yellow = "#ffcc66"
+let s:green = "#99cc99"
+let s:aqua = "#009999"
+let s:blue = "#99cccc"
+let s:purple = "#cc99cc"
+let s:window = "#4d5057"
 
-colorscheme Tomorrow-Night
-let s:foreground = "#c5c8c6"
-let s:background = "#1d1f21"
-let s:selection  = "#373b41"
-let s:line       = "#282a2e"
-let s:comment    = "#969896"
-let s:red        = "#cc6666"
-let s:orange     = "#de935f"
-let s:yellow     = "#f0c674"
-"let s:green      = "#b5bd68"    " modified!
-let s:green      = "#99cc99"
-let s:aqua       = "#8abeb7"
-let s:blue       = "#81a2be"
-let s:purple     = "#b294bb"
-let s:window     = "#4d5057"
+"colorscheme Tomorrow-Night
+"let s:foreground = "#c5c8c6"
+"let s:background = "#1d1f21"
+"let s:selection  = "#373b41"
+"let s:line       = "#282a2e"
+"let s:comment    = "#969896"
+"let s:red        = "#cc6666"
+"let s:orange     = "#de935f"
+"let s:yellow     = "#f0c674"
+""let s:green      = "#b5bd68"    " modified
+"let s:green      = "#99cc99"     " original
+"let s:aqua       = "#8abeb7"
+"let s:blue       = "#81a2be"
+"let s:purple     = "#b294bb"
+"let s:window     = "#4d5057"
 
 " Custom Colors
 "let s:fadedorange = "#5d4535"
@@ -158,7 +160,7 @@ highlight JSHintError ctermbg=88 guibg=s:fadedorange
 
 " }}}
 
-"""" Shortcuts """" {{{
+" Shortcuts {{{
 
 " leader key
 let mapleader = ','
@@ -224,7 +226,7 @@ cnoreabbr <expr> bq 'normal <leader>bd<CR>'
 
 " }}}
 
-"""" Plugins """" {{{
+" Plugins {{{
 
 " NERD Tree file browser
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -323,7 +325,7 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " }}}
 
-"""" Neovim """" {{{
+" Neovim {{{
 
 " Terminal Mode
 let g:terminal_color_0  = '#2e3436'
@@ -353,7 +355,7 @@ endif
 
 " }}}
 
-""" Functions """ {{{
+" Functions {{{
 
 " toggle between number and relative number on ,m ... bit of a hack
 nnoremap <leader>m :call ToggleRelativeAbsoluteNumber()<CR>
@@ -424,7 +426,7 @@ nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 
 " }}}
 
-"""" MY CUSTOM SHIT """" {{{
+" MY CUSTOM SHIT {{{
 
 """Operator Pending Mode"""
 
