@@ -134,3 +134,21 @@ TODO:
 * `,gs` and ":Gstatus" isn't visible until typing starts
 * pymode
     * I remapped `K` to do what `<C-c>d` did -- "pymode_rope_show_doc_bind"  ... jank
+* make a "layman's" mode, where ; and <esc> aren't strangely remapped
+
+Random Intended Exploration:
+- how do you have stuff (search results, etc) highlighted?
+- ; and , are used with f/F/t/T
+- "interesting word" highlight
+- kana/vim-object-*
+- vim-peekaboo      registers
+- marks are dope: ma to mark, 'a to return
+- let g: centeronsearch = 'zvzz'
+- vimundo -- run undo on previous saves
+- how do i put them in a different place?
+- vimcasts bubbling text
+- slime
+- ^ goes to beginning of line
+- leader arrow is to resize by 3
+- vim-markology
+- vim-wiki checklist
