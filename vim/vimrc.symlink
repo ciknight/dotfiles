@@ -39,6 +39,7 @@ set mouse=n  "doesn't work
 
 " turn filetype on
 filetype on
+filetype plugin on
 filetype plugin indent on    " enable loading indent file for filetype
 
 " defaults
@@ -76,6 +77,10 @@ augroup END
 
 augroup filetype_vim
     autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+
+augroup filetype_wiki
+    autocmd BufNewFile,BufRead *.wiki setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 augroup filetype_js

@@ -105,6 +105,15 @@ Ctrlp
 =====
 * with ctrlp open, hit <F5> to update the cache (so new files show up)
 
+z
+=
+* zi	switch folding on or off
+* za	toggle current fold open/closed
+* zc	close current fold
+* zR	open all folds
+* zM	close all folds
+* zv	expand folds to reveal cursor
+
 General
 =======
 * `,bq` closes buffer
@@ -116,7 +125,7 @@ General
 * `:UltiSnipsEdit` allows you to edit snippets for language you're currently editing
 * `<C-w HJKL>` swaps windows
 * `viw` block selects word where cursor lives
-* `zz` center the cursor
+* `zz` center the cursor, `zb` and `zt` bring to bottom and top of page
 * `,th` to toggle search highlighting
 
 Neovim
@@ -135,6 +144,8 @@ TODO:
 * pymode
     * I remapped `K` to do what `<C-c>d` did -- "pymode_rope_show_doc_bind"  ... jank
 * make a "layman's" mode, where ; and <esc> aren't strangely remapped
+* should be able to version-control dotfiles from another project (using Fugitive?)
+* nested folding in my vimrc?
 
 Random Intended Exploration:
 - how do you have stuff (search results, etc) highlighted?
