@@ -5,6 +5,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 "Plug 'junegunn/goyo.vim'
 Plug 'bling/vim-airline'
@@ -313,8 +314,8 @@ nnoremap <leader>es :UltiSnipsEdit<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" Fzf
-noremap <c-p> :FZF<cr>
+" Fzf -- commented out while broken ...
+"noremap <c-p> :FZF<cr>
 
 " IndentLine
 let g:indentLine_enabled=0  " is there a better way not to show tabs by default???
