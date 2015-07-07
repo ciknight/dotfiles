@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'bling/vim-airline'
 Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
@@ -18,19 +19,24 @@ Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
 " Language-specific
 Plug 'klen/python-mode'
 Plug 'jmcantrell/vim-virtualenv'
-"Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'godlygeek/tabular'            " these 2 go 
+Plug 'plasticboy/vim-markdown'      " together
 " Testing
 "Plug 'sjl/gundo.vim'
 "Plug 'Yggdroot/indentLine'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
 "Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'marijnh/tern_for_vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'sjl/tslime.vim'
 call plug#end()
 " }}}
 
@@ -51,7 +57,9 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set hlsearch
-set laststatus=2                        " always show status line
+set laststatus=2                        " still show statusline even if only 1 window open
+set ignorecase                          " command line not case sensitive
+
 
 " relative line numbers
 set number
@@ -78,6 +86,10 @@ augroup END
 
 augroup filetype_vim
     autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+
+augroup filetype_lisp
+    autocmd FileType lisp,scheme,art setlocal equalprg=scmindent.rkt
 augroup END
 
 augroup filetype_wiki

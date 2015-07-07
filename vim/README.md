@@ -148,6 +148,7 @@ TODO:
 * nested folding in my vimrc?
 
 Random Intended Exploration:
+============================
 - how do you have stuff (search results, etc) highlighted?
 - ; and , are used with f/F/t/T
 - "interesting word" highlight
