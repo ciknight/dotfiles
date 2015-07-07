@@ -344,6 +344,12 @@ nnoremap <leader>tt :IndentLinesToggle<cr>
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" tslime
+let g:tslime_ensure_trailing_newlines = 1
+let g:tslime_normal_mapping = '<localleader>t'
+let g:tslime_visual_mapping = '<localleader>t'
+let g:tslime_vars_mapping = '<localleader>T'
+
 " Rainbow
 "let g:rainbow_active = 1
 "let g:rainbow_conf = {
