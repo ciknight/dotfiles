@@ -18,6 +18,11 @@ Navigation
 ----
 * `<C-d>` scroll down 1 page
 * `<C-u>` scroll up 1 page
+* `gj` and `gk` navigate "display lines" — which are the result of `:set wrap`
+
+Editing
+-------
+* `vd/ge<CR>` deletes everything before the first occurrence of "ge" (an "exclusive" motion)
 
 Python
 ------
@@ -57,6 +62,7 @@ Window Sizing
 * `Ctrl+w + v` Vertical Split
 * `Ctrl+w + s` Horizontal Split
 * `Ctrl+w + q` Close current windows
+* `<C-w>=` Equalize width and height of all windows (except NERDTree explorer!)
 
 Status Bar
 ----------

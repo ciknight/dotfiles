@@ -17,8 +17,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
 Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
 " Language-specific
-Plug 'klen/python-mode'
-Plug 'jmcantrell/vim-virtualenv'
+Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
@@ -59,6 +59,7 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set hlsearch
+set incsearch
 set laststatus=2                        " still show statusline even if only 1 window open
 set ignorecase                          " command line not case sensitive
 
@@ -210,11 +211,17 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " make 'delete' work better
 set backspace+=indent,eol,start
 
-" Window Switching
+" Window Navigation
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+
+" Buffer Navigation
+nnoremap <silent> [b :bprevious<CR> 
+nnoremap <silent> ]b :bnext<CR> 
+nnoremap <silent> [B :bfirst<CR> 
+nnoremap <silent> ]B :blast<CR>
 
 " allow quit/save via single keypress
 noremap <leader>q :q<CR>
@@ -237,7 +244,8 @@ set pastetoggle=<F2>
 set clipboard=unnamed
 
 " ; is an alias for :
-nnoremap ; :
+"nnoremap ; :
+"nnoremap : <nop>
 
 " Thank you vi
 nnoremap Y y$
@@ -518,7 +526,6 @@ onoremap il[ :<c-u>normal! F]vi[<cr>
 onoremap ih :<c-u>execute "normal! ?^[=]\{2,}$\r:nohlsearch\rkvg_"<cr>
 
 inoremap <esc> <nop>
-nnoremap : <nop>
 augroup python_shortcuts
     autocmd FileType python :iabbrev rr return
     autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
