@@ -19,11 +19,33 @@ Navigation
 * `<C-d>` scroll down 1 page
 * `<C-u>` scroll up 1 page
 * `gj` and `gk` navigate "display lines" — which are the result of `:set wrap`
+* `H` move to top of screen
+* `M` move to middle of screen
+* `L` move to bottom of screen
+* `?abc` searches backwards for "abc" string
+
+z
+=
+* zi	switch folding on or off
+* za	toggle current fold open/closed
+* zc	close current fold
+* zR	open all folds
+* zM	close all folds
+* zv	expand folds to reveal cursor
+* `z.` current line to middle of screen
+* `zt` current line to top of screen
+* `zb` current line to bottom of screen
+
 
 Editing
 -------
 * `vd/ge<CR>` deletes everything before the first occurrence of "ge" (an "exclusive" motion)
-
+* In visual modes:
+    * `i]` expands selection inside next "]".
+    * `a]` expands selection around next "]".
+* `%` jumps to matching ({[ etc
+* `<c-r>#` pastes from register # (insert mode)
+* `gp/P` paste with different cursor position
 Python
 ------
  `<C-Space>` Completion
@@ -111,14 +133,6 @@ Ctrlp
 =====
 * with ctrlp open, hit <F5> to update the cache (so new files show up)
 
-z
-=
-* zi	switch folding on or off
-* za	toggle current fold open/closed
-* zc	close current fold
-* zR	open all folds
-* zM	close all folds
-* zv	expand folds to reveal cursor
 
 General
 =======

@@ -15,17 +15,15 @@ Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
-Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
 " Language-specific
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'godlygeek/tabular'            " these 2 go 
 Plug 'plasticboy/vim-markdown'      " together
 " Testing
-"Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 "Plug 'Yggdroot/indentLine'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
@@ -38,7 +36,15 @@ Plug 'marijnh/tern_for_vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sjl/tslime.vim'
 Plug 'luochen1990/rainbow'
+Plug 'chriskempson/base16-vim'
 "Plug 'luochen1990/rainbow', { 'for': ['clojure', 'scheme'] }
+" Colors
+Plug 'altercation/vim-colors-solarized'
+Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
+Plug 'junegunn/seoul256.vim'
+"Plug 'vyshane/vydark-vim-color'
+Plug 'vim-scripts/vydark'
+
 call plug#end()
 " }}}
 
@@ -93,6 +99,7 @@ augroup END
 
 augroup filetype_lisp
     autocmd FileType lisp,scheme,art setlocal equalprg=scmindent.rkt
+    autocmd FileType lisp,scheme,art setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 augroup filetype_wiki
@@ -107,6 +114,7 @@ augroup END
 " Automatic reloading of .vimrc
 augroup write_vimrc
     autocmd! bufwritepost .vimrc source %
+    autocmd BufRead .vimrc normal zM
 augroup END
 
 " Code folding for vim files
@@ -131,7 +139,7 @@ syntax enable
 " ---------------------
 "let g:solarized_termcolors=256
 "set background=dark
-"colorscheme solarizedf
+"colorscheme solarized
 "highlight clear SignColumn
 "set t_Co=256
 
@@ -155,22 +163,30 @@ set background=dark
 "let s:purple = "#cc99cc"
 "let s:window = "#4d5057"
 
-colorscheme Tomorrow-Night
-let s:foreground = "#c5c8c6"
-let s:background = "#4B4B4B"
-"let s:background = "#1d1f21"
-let s:selection  = "#373b41"
-let s:line       = "#282a2e"
-let s:comment    = "#969896"
-let s:red        = "#cc6666"
-let s:orange     = "#de935f"
-let s:yellow     = "#f0c674"
-"let s:green      = "#b5bd68"    " modified
-let s:green      = "#99cc99"     " original
-let s:aqua       = "#8abeb7"
-let s:blue       = "#81a2be"
-let s:purple     = "#b294bb"
-let s:window     = "#4d5057"
+"colorscheme solarized
+"let g:solarized_termcolors=256
+"set t_Co=256
+
+"colorscheme vydark
+"colorscheme seoul256
+colorscheme base16-tomorrow
+"colorscheme base16-eighties
+"colorscheme Tomorrow-Night
+"let s:foreground = "#c5c8c6"
+"let s:background = "#4B4B4B"
+""let s:background = "#1d1f21"
+"let s:selection  = "#373b41"
+"let s:line       = "#282a2e"
+"let s:comment    = "#969896"
+"let s:red        = "#cc6666"
+"let s:orange     = "#de935f"
+"let s:yellow     = "#f0c674"
+""let s:green      = "#b5bd68"    " modified
+"let s:green      = "#99cc99"     " original
+"let s:aqua       = "#8abeb7"
+"let s:blue       = "#81a2be"
+"let s:purple     = "#b294bb"
+"let s:window     = "#4d5057"
 
 " Custom Colors
 "let s:fadedorange = "#5d4535"
@@ -192,10 +208,6 @@ let maplocalleader = "\\"
 nnoremap <Enter> o<ESC>
 nnoremap <S-Enter> O<ESC>
 
-" Navigate buffers
-map <F2> :bprevious<CR>
-map <F3> :bnext<CR>
-
 " Insert -> normal mode
 inoremap jj <ESC>
 
@@ -212,14 +224,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 set backspace+=indent,eol,start
 
 " Window Navigation
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 " Buffer Navigation
-nnoremap <silent> [b :bprevious<CR> 
-nnoremap <silent> ]b :bnext<CR> 
+nnoremap <silent> <F2> :bprevious<CR> 
+nnoremap <silent> <F3> :bnext<CR> 
 nnoremap <silent> [B :bfirst<CR> 
 nnoremap <silent> ]B :blast<CR>
 
@@ -240,7 +252,7 @@ endfunction
 
 " Better copy & paste
 " FIXME: how to automatically leave paste mode after pasting happens?
-set pastetoggle=<F2>
+set pastetoggle=<F1>
 set clipboard=unnamed
 
 " ; is an alias for :
@@ -257,10 +269,16 @@ cnoreabbr <expr> bq 'normal <leader>bd<CR>'
 
 " Plugins {{{
 
+" built-in plugin to enhance % command
+runtime macros/matchit.vim
+
 " NERD Tree file browser
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
 
 " fzf
 set runtimepath+=~/.fzf
@@ -388,22 +406,22 @@ let g:tslime_vars_mapping = '<localleader>T'
 " Neovim {{{
 
 " Terminal Mode
-let g:terminal_color_0  = '#2e3436'
-let g:terminal_color_1  = '#cc0000'
-let g:terminal_color_2  = '#4e9a06'
-let g:terminal_color_3  = '#c4a000'
-let g:terminal_color_4  = '#3465a4'
-let g:terminal_color_5  = '#75507b'
-let g:terminal_color_6  = '#0b939b'
-let g:terminal_color_7  = '#d3d7cf'
-let g:terminal_color_8  = s:red
-let g:terminal_color_9  = s:yellow
-let g:terminal_color_10 = s:orange
-let g:terminal_color_11 = s:green
-let g:terminal_color_12 = s:aqua
-let g:terminal_color_13 = s:blue
-let g:terminal_color_14 = s:purple
-let g:terminal_color_15 = s:window
+"let g:terminal_color_0  = '#2e3436'
+"let g:terminal_color_1  = '#cc0000'
+"let g:terminal_color_2  = '#4e9a06'
+"let g:terminal_color_3  = '#c4a000'
+"let g:terminal_color_4  = '#3465a4'
+"let g:terminal_color_5  = '#75507b'
+"let g:terminal_color_6  = '#0b939b'
+"let g:terminal_color_7  = '#d3d7cf'
+"let g:terminal_color_8  = s:red
+"let g:terminal_color_9  = s:yellow
+"let g:terminal_color_10 = s:orange
+"let g:terminal_color_11 = s:green
+"let g:terminal_color_12 = s:aqua
+"let g:terminal_color_13 = s:blue
+"let g:terminal_color_14 = s:purple
+"let g:terminal_color_15 = s:window
 
 if has('nvim')
     " backtick sends true escape
