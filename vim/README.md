@@ -11,6 +11,9 @@ Run `npm install` from within the `vim/bundle/tern` directory.
 
 Inspired by [this](http://www.sontek.net/blog/2011/05/07/turning_vim_into_a_modern_python_ide.html) and [this](http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/) and [&#9731;](https://github.com/UnicodeSnowman/cap-vim) among others.
 
+Install "Droid Sans Mono for Powerline" font from [here](https://github.com/powerline/fonts) using osx's "Font Book" app
+
+
 Notes
 =====
 
