@@ -1,4 +1,5 @@
 " Plug {{{
+"
 call plug#begin('~/.vim/plugs')
 " General
 Plug 'scrooloose/nerdtree'
@@ -69,6 +70,9 @@ set incsearch
 set laststatus=2                        " still show statusline even if only 1 window open
 set ignorecase                          " command line not case sensitive
 
+"" minimal statusline
+"set statusline+=%=%y%m\       " right-aligned file type [modified]
+"set statusline=>>>>\ %t:%l:%c " minimal status line with file name
 
 " relative line numbers
 set number
@@ -187,14 +191,6 @@ colorscheme base16-tomorrow
 "let s:blue       = "#81a2be"
 "let s:purple     = "#b294bb"
 "let s:window     = "#4d5057"
-
-" Custom Colors
-"let s:fadedorange = "#5d4535"
-
-" ???
-highlight TabLineSel guifg=orange
-highlight JSHintError ctermbg=88 guibg=s:fadedorange
-
 
 " }}}
 
@@ -335,6 +331,8 @@ nnoremap <leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer numbers
 let g:airline#extensions#tabline#fnamemod = ':t'        " Just show the filename (no path) in the tab
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
 
 "" Ultisnips
 let g:UltiSnipsUsePythonVersion=3
