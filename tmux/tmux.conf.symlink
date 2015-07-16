@@ -49,19 +49,19 @@
 # 6699cc Blue
 # cc99cc Purple
 
-## set status bar
+# set status bar
 set -g status-bg "#373b41"
 set -g status-fg "#c5c8c6"
 
-## highlight active window
+# highlight active window
 setw -g window-status-current-bg "#282a2e"
 setw -g window-status-current-fg "#81a2be"
 
-## highlight activity in status bar
+# highlight activity in status bar
 setw -g window-status-activity-fg "#8abeb7"
 setw -g window-status-activity-bg "#1d1f21"
 
-## pane border and colors
+# pane border and colors
 set -g pane-active-border-bg default
 set -g pane-active-border-fg "#373b41"
 set -g pane-border-bg default
@@ -91,6 +91,9 @@ set-option -g renumber-windows on
 
 # sane scrolling
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+
+# Powerline -- no good colorscheme yet  ...
+# source "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/powerline/bindings/tmux/powerline.conf"
 
 ###################
 #### From Book ####
