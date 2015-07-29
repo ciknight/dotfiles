@@ -19,18 +19,19 @@ Plug 'mtth/scratch.vim'
 " Language-specific
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+Plug 'https://github.com/JarrodCTaylor/vim-python-test-runner.git'   " chokes on virtual environments
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'godlygeek/tabular'            " these 2 go 
 Plug 'plasticboy/vim-markdown'      " together
 " Testing
 Plug 'sjl/gundo.vim'
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 "Plug 'majutsushi/tagbar'
 "Plug 'gregsexton/gitv'
 "Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'marijnh/tern_for_vim'
@@ -196,6 +197,9 @@ colorscheme base16-tomorrow
 
 " Shortcuts {{{
 
+" open last buffer (nice for moving in and out of term)
+nmap <tab> :b#<cr>
+
 " leader key
 let mapleader = ','
 let maplocalleader = "\\"
@@ -280,10 +284,10 @@ nnoremap <F5> :GundoToggle<CR>
 set runtimepath+=~/.fzf
 
 " Ag fuzzy text search
-nnoremap <leader>a <Esc>:Ag!
+nnoremap <leader>a <Esc>:Ag!<space>
 
 " Python-Mode
-let g:pymode_python = 'python'
+let g:pymode_python = 'python3'
 let g:pymode_motion = 1
 let g:pymode_virtualenv = 0
 " Editing
@@ -306,8 +310,15 @@ noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
 
+" ,w
+nnoremap<localleader>nf :NosetestFile<CR>
+nnoremap<localleader>nc :NosetestClass<CR>
+nnoremap<localleader>nm :NosetestMethod<CR>
+nnoremap<localleader>nb :NosetestBaseMethod<CR>
+nnoremap<localleader>rr :RerunLastTests<CR>
+
 " Vim-Virtualenv
-"let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
+let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
 
 " Scratch
 nnoremap <leader>s :Scratch<cr>
@@ -359,6 +370,7 @@ nnoremap <leader>gd :Gdiff<cr>
 " IndentLine
 let g:indentLine_enabled=0  " is there a better way not to show tabs by default???
 let g:indentLine_leadingSpaceChar = '·'
+
 " toggle all, toggle spaces, toggle tabs
 nnoremap <leader>ta :LeadingSpaceToggle<cr>:IndentLinesToggle<cr> 
 nnoremap <leader>ts :LeadingSpaceToggle<cr>
@@ -426,6 +438,8 @@ if has('nvim')
     tnoremap ` <Esc>
     " terminal mode escapes just like insert mode
     tnoremap jj <C-\><C-n>
+    " quickly enter term
+    nnoremap <leader>te :term<cr>
     au WinEnter *pid:* call feedkeys('i')
 endif
 
@@ -541,10 +555,10 @@ onoremap il[ :<c-u>normal! F]vi[<cr>
 " Markdown Headers -- how to include "----"?
 onoremap ih :<c-u>execute "normal! ?^[=]\{2,}$\r:nohlsearch\rkvg_"<cr>
 
-inoremap <esc> <nop>
+"inoremap <esc> <nop>
 augroup python_shortcuts
-    autocmd FileType python :iabbrev rr return
-    autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
+    "autocmd FileType python :iabbrev rr return
+    "autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
 augroup END
 
 " }}}
