@@ -32,7 +32,7 @@ windows:
     - cd ~/Code/Karmic/karmicapp/src
     - nvim
     #- Escape
-    - ":NERDTreeToggle"
+    - ":NERDTree karmic"
   - frontend:
     - cd ~/Code/Karmic/web-frontend-code
     - nvim
