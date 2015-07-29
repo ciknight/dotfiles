@@ -100,8 +100,10 @@ set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 ###################
 
 # new mapping for prefix
-set -g prefix C-a
 unbind C-b
+#set -g prefix C-a
+set -g prefix `
+bind-key ` send-prefix
 
 # Better indexes
 set -g base-index 1
