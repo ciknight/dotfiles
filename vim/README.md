@@ -116,6 +116,7 @@ Nerd Tree
 * `m` open menu (new node, delete node, move node, copy node)
 * `r` reload
 * `o` Open files, directories and bookmarks
+* `<shift>i` shows dotfiles
 * go            Open selected file, but leave cursor in the NERDTree
 * t              Open selected node/bookmark in a new tab
 * T              Same as 't' but keep the focus on the current tab

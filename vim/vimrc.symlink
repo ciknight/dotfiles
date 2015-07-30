@@ -16,6 +16,8 @@ Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
+Plug 'scrooloose/syntastic'
+Plug 'editorconfig/editorconfig-vim'
 " Language-specific
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
@@ -24,6 +26,7 @@ Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'godlygeek/tabular'            " these 2 go 
 Plug 'plasticboy/vim-markdown'      " together
+"Plug 'mxw/vim-jsx'
 " Testing
 Plug 'sjl/gundo.vim'
 Plug 'Yggdroot/indentLine'
@@ -100,6 +103,10 @@ augroup END
 
 augroup filetype_vim
     autocmd FileType vim setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+
+augroup filetype_jsx
+    autocmd FileType jsx setlocal ts=8 sts=8 sw=8 expandtab
 augroup END
 
 augroup filetype_lisp
@@ -310,7 +317,7 @@ noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
 noremap <leader>i :PymodeRopeAutoImport<cr>
 
-" ,w
+" python nosetests
 nnoremap<localleader>nf :NosetestFile<CR>
 nnoremap<localleader>nc :NosetestClass<CR>
 nnoremap<localleader>nm :NosetestMethod<CR>
@@ -319,6 +326,16 @@ nnoremap<localleader>rr :RerunLastTests<CR>
 
 " Vim-Virtualenv
 let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
+
+" Syntastic (these are suggested settings)
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+" EditorConfig (suggested settings)
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Scratch
 nnoremap <leader>s :Scratch<cr>
@@ -439,7 +456,7 @@ if has('nvim')
     " terminal mode escapes just like insert mode
     tnoremap jj <C-\><C-n>
     " quickly enter term
-    nnoremap <leader>te :term<cr>
+    nnoremap <leader><leader> :term<cr>
     au WinEnter *pid:* call feedkeys('i')
 endif
 
