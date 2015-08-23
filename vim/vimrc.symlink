@@ -16,7 +16,7 @@ Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic', { 'for': 'javascript' }  " ENABLE LATER> ITSGOOD
 Plug 'editorconfig/editorconfig-vim'
 " Language-specific
 Plug 'klen/python-mode', { 'for': 'python' }
@@ -26,6 +26,7 @@ Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'godlygeek/tabular'            " these 2 go 
 Plug 'plasticboy/vim-markdown'      " together
+Plug 'jaxbot/syntastic-react'
 "Plug 'mxw/vim-jsx'
 " Testing
 Plug 'sjl/gundo.vim'
@@ -106,7 +107,7 @@ augroup filetype_vim
 augroup END
 
 augroup filetype_jsx
-    autocmd FileType jsx setlocal ts=8 sts=8 sw=8 expandtab
+    autocmd FileType jsx setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 augroup filetype_lisp
@@ -281,6 +282,7 @@ runtime macros/matchit.vim
 
 " NERD Tree file browser
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>N :NERDTree karmic<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
 

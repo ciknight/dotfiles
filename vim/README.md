@@ -154,7 +154,7 @@ General
 
 Neovim
 ======
-* install neovim plugin
+* remember to install neovim in virtual environments for auto-completion to work
 
 TODO:
 =====
