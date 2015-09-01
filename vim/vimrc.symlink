@@ -314,6 +314,9 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_rope_completion = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_rename_bind = '<leader>pr'
+let g:pymode_rope_autoimport_import_after_complete = 1
+
+
 " Mappings
 noremap <leader>l :PymodeLint<cr>
 noremap <leader>L :PymodeLintAuto<cr>
@@ -328,6 +331,9 @@ nnoremap<localleader>rr :RerunLastTests<CR>
 
 " Vim-Virtualenv
 let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
+
+" Tern
+let g:tern_map_keys=1
 
 " Syntastic (these are suggested settings)
 let g:syntastic_always_populate_loc_list = 1

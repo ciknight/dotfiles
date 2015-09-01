@@ -40,6 +40,8 @@ windows:
     - ":NERDTreeToggle"
   - sup:
     - cd ~/Code/Karmic/sup
+  - yooo:
+    - cd ~/Code/Karmic/you-only-onboard-once
   #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
   #- notes: cd code/notes; vim; tmux send-keys -l iabc;
   - shell:
