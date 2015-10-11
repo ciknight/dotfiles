@@ -6,4 +6,6 @@ idea/
 *.swp
 
 vim/plugs/
+vim/homegrown-plugs/
+vim/undo/
 zsh/submodules/
