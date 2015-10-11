@@ -16,7 +16,7 @@ Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'mtth/scratch.vim'
-"Plug 'scrooloose/syntastic', { 'for': 'javascript' }  " ENABLE LATER> ITSGOOD
+Plug 'scrooloose/syntastic', { 'for': ['javascript','python'] }  " ENABLE LATER> ITSGOOD
 Plug 'editorconfig/editorconfig-vim'
 " Language-specific
 Plug 'klen/python-mode', { 'for': 'python' }
@@ -29,6 +29,7 @@ Plug 'plasticboy/vim-markdown'      " together
 Plug 'jaxbot/syntastic-react'
 "Plug 'mxw/vim-jsx'
 " Testing
+Plug 'groenewege/vim-less'
 Plug 'sjl/gundo.vim'
 Plug 'Yggdroot/indentLine'
 "Plug 'majutsushi/tagbar'
@@ -37,8 +38,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 "Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'marijnh/tern_for_vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+"Plug 'marijnh/tern_for_vim'  " Weird error happening when i switch vim
+"windows/buggers
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sjl/tslime.vim'
 Plug 'luochen1990/rainbow'
@@ -336,11 +338,17 @@ let g:virtualenv_directory = '/Users/Justin/.virtualenvs'
 let g:tern_map_keys=1
 
 " Syntastic (these are suggested settings)
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_enable_signs=1
+"let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
 " EditorConfig (suggested settings)
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
