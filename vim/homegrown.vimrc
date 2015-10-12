@@ -1,9 +1,10 @@
 call plug#begin('~/.vim/homegrown-plugs')
 
 " essentials
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"Plug 'junegunn/fzf.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
-Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic', { 'for': ['javascript','python'] }
@@ -17,6 +18,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-unimpaired'
 
 " language-specific
 
@@ -112,6 +114,11 @@ nnoremap <silent> <F3> :bnext<CR>
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" open last buffer (nice for moving in and out of term)
+nmap <tab> :b#<cr>
+
+" 
+
 let mapleader = ','
 let maplocalleader = '\\'
 
@@ -119,6 +126,9 @@ let maplocalleader = '\\'
 noremap <leader>q :q<CR>
 noremap <leader>w :w<CR>
 inoremap jj <ESC>
+
+" remove search highlighting
+nnoremap <leader>th :nohlsearch<CR>
 
 " vimrc editing shortcuts
 nnoremap <leader>eg <C-w><C-s><C-l>:e ~/.gitconfig<CR>
@@ -141,6 +151,18 @@ nnoremap <leader><leader> :buffers<CR>
 
 " Plugins {{{
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 " enable persistent undo so that undo history persists across vim sessions
@@ -157,6 +179,11 @@ set rtp+=~/.fzf
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__'] 
+
+"NERDCommenter
+let g:NERDCustomDelimiters = {
+    \ 'javascript': { 'left': '// ' }
+    \ }
 
 "" Ultisnips
 let g:UltiSnipsUsePythonVersion=3
@@ -205,6 +232,20 @@ let g:airline_powerline_fonts = 1
 
 " }}}
  
+" Neovim {{{
+
+if has('nvim')
+    " backtick sends true escape
+    tnoremap ` <Esc>
+    " terminal mode escapes just like insert mode
+    tnoremap jj <C-\><C-n>
+    " quickly enter term
+    nnoremap <leader><leader> :term<cr>
+    au WinEnter *pid:* call feedkeys('i')
+endif
+
+" }}}
+
 " Functions {{{
 
 " toggle between number and relativenumber

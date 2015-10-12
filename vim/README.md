@@ -129,6 +129,10 @@ Nerd Tree
 * X              Recursively close all children of the current node
 * e              Edit the current dir
 
+Nerd Commenter
+==============
+* `<leader>cs` sexy (block) comment
+
 Surround
 ========
 * block select + `S{` to wrap block in curlies
