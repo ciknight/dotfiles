@@ -7,7 +7,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic', { 'for': ['javascript','python'] }
+"Plug 'scrooloose/syntastic', { 'for': ['javascript','python'] }
+Plug 'benekastah/neomake'
 Plug 'SirVer/ultisnips'
 Plug 'simnalamburt/vim-mundo'
 Plug 'christoomey/vim-tmux-navigator'
@@ -19,6 +20,7 @@ Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-unimpaired'
+Plug 'airblade/vim-gitgutter'
 
 " language-specific
 
@@ -78,6 +80,13 @@ augroup filetype_js
     autocmd FileType javascript setlocal omnifunc=tern#Complete
 augroup END
 
+augroup markdown
+ au! BufRead,BufNewFile *.mkd   setfiletype mkd
+augroup END
+augroup filetype_mkd
+    autocmd Filetype mkd setlocal ts=4 sts=4 sw=4
+augroup END
+
 " }}}
 
 " Navigation {{{
@@ -117,7 +126,11 @@ nnoremap gV `[v`]
 " open last buffer (nice for moving in and out of term)
 nmap <tab> :b#<cr>
 
-" 
+" No 'Ex mode'
+nnoremap Q <nop>
+
+" close quickfix list
+nnoremap <leader>tl :ccl<CR>
 
 let mapleader = ','
 let maplocalleader = '\\'
@@ -135,7 +148,6 @@ nnoremap <leader>eg <C-w><C-s><C-l>:e ~/.gitconfig<CR>
 nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
 nnoremap <leader>er <C-w><C-s><C-l>:e ~/dotfiles/vim/README.md<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
 
 " thanks vi
 nnoremap Y y$
@@ -175,6 +187,9 @@ nnoremap <space> :FZF<CR>
 " recommended fzf settings
 set rtp+=~/.fzf
 
+" GitGutter
+nnoremap <leader>tg :GitGutterToggle<CR>
+
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
@@ -204,21 +219,27 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
 " Syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_javascript_checkers=['eslint', 'jshint']
-autocmd FileType javascript let b:syntastic_checkers=findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
+"let g:syntastic_always_populate_loc_list=0
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_check_on_open=1
+"let g:syntastic_check_on_wq=1
+"let g:syntastic_enable_signs=1
+"let g:syntastic_javascript_checkers=['eslint', 'jshint']
+"let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+"autocmd FileType javascript let b:syntastic_checkers=findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
-function! ToggleSyntasticErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, open syntastic error location panel
-        Errors
-    endif
-endfunction
+"function! ToggleSyntasticErrors()
+    "let old_last_winnr = winnr('$')
+    "lclose
+    "if old_last_winnr == winnr('$')
+        "" Nothing was closed, open syntastic error location panel
+        "Errors
+    "endif
+"endfunction
+
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost * Neomake
 
 " toggle syntastic error list
 nnoremap <silent> <C-e> :<C-u>call ToggleSyntasticErrors()<CR>
@@ -257,6 +278,7 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunc
+nnoremap <leader>tn :call ToggleNumber()<CR>
 
 " Better Help Windows
 function! OpenHelpInCurrentWindow(topic)
