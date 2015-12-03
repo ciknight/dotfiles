@@ -1,20 +1,18 @@
-call plug#begin('~/.vim/homegrown-plugs')
+call plug#begin('~/.vim/plugs')
 
 " essentials
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic', { 'for': ['javascript','python'] }
 Plug 'benekastah/neomake'
 Plug 'SirVer/ultisnips'
 Plug 'simnalamburt/vim-mundo'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'python-rope/ropevim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
@@ -22,12 +20,23 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 
+" HTML/CSS
+Plug 'mattn/emmet-vim', {'for': ['html', 'css']}
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['html', 'j2']}
+
+" Python
+"Plug 'python-rope/ropevim'
+Plug 'klen/python-mode'
+
 " language-specific
 
 " colors
 Plug 'junegunn/seoul256.vim'
-Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
+"Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
 Plug 'andrwb/vim-lapis256'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'jonathanfilip/vim-lucius'
 "Plug 'luochen1990/rainbow'
 "Plug 'vim-scripts/vydark'
 "Plug 'vim-scripts/xoria256.vim'
@@ -38,17 +47,25 @@ Plug 'andrwb/vim-lapis256'
 "Plug 'fent/vim-frozen'
 "Plug 'kristijanhusak/vim-hybrid-material'
 "Plug 'orthecreedence/void.vim'
-" Plug 'chriskempson/base16-vim'
-" Plug 'altercation/vim-colors-solarized'
 
 " maybe later
 "Plug 'bling/vim-airline'
 
 call plug#end()
 
-colorscheme lapis256
-
 syntax enable
+
+"set background=light
+colorscheme tomorrow-night
+
+"set background=dark
+"colorscheme solarized
+
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=0
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
+
 
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
@@ -78,6 +95,14 @@ set writebackup
 augroup filetype_js
     autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
     autocmd FileType javascript setlocal omnifunc=tern#Complete
+augroup END
+
+augroup filetype_html
+    autocmd Filetype html setlocal ts=4 sts=4 sw=4
+augroup END
+
+augroup filetype_css
+    autocmd Filetype css setlocal ts=2 sts=2 sw=2
 augroup END
 
 augroup markdown
@@ -225,7 +250,7 @@ nnoremap <leader>gd :Gdiff<cr>
 "let g:syntastic_check_on_wq=1
 "let g:syntastic_enable_signs=1
 "let g:syntastic_javascript_checkers=['eslint', 'jshint']
-"let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
 "autocmd FileType javascript let b:syntastic_checkers=findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
 "function! ToggleSyntasticErrors()
@@ -237,8 +262,17 @@ nnoremap <leader>gd :Gdiff<cr>
     "endif
 "endfunction
 
+" Pymode
+let g:pymode_lint = 0
+let g:pymode_python = 'python3'
+let g:pymode_virtualenv_path = $VIRTUAL_ENV
+let g:pymode_rope_goto_definition_cmd = 'e'
+set nofoldenable  " don't fold by default
+
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_open_list = 0
 autocmd! BufWritePost * Neomake
 
 " toggle syntastic error list
