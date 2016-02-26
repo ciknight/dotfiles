@@ -1,0 +1,41 @@
+# ~/.tmuxinator/native.yml
+
+name: react
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+windows:
+  - shell: 
+      layout: 4525,204x63,0,0{102x63,0,0,10,101x63,103,0,12}   # vertical split
+      panes:
+        - cd ~/code/karmic
+        - cd ~/code/karmic
+  - code:
+    - cd ~/Code/Karmic
+    - workon karmic
+    - nvim
+    - Escape
+    - ":NERDTreeToggle"
+  - examples:
+      layout: 4525,204x63,0,0{102x63,0,0,10,101x63,103,0,12}   # vertical split
+      panes:
+        - cd ~/code/karmic
+        - cd ~/code/react-native
+

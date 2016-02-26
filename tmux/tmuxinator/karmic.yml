@@ -32,23 +32,25 @@ windows:
       #layout: c654,204x51,0,0{102x51,0,0[102x25,0,0,1,102x25,0,26,10],101x51,103,0,9}
       layout: 5139,318x83,0,0{159x83,0,0[159x41,0,0,9,159x41,0,42,12],158x83,160,0[158x41,160,0,10,158x41,160,42,11]}
       panes:
-        - cd ~/Code/Karmic
-        - cd ~/Code/Karmic
-        - cd ~/Code/Karmic
-        - cd ~/Code/Karmic
+        - cd ~/Karmic
+        - cd ~/Karmic
+        - cd ~/Karmic
+        - cd ~/Karmic
   - backend: 
-    - cd ~/Code/Karmic/karmicapp/src
+    - cd ~/Karmic/karmicapp/src
+    - workon karmic
     - nvim
     #- Escape
     - ":NERDTree karmic"
   - frontend:
     #- cd ~/Code/Karmic/web-frontend-code
-    - cd ~/Code/Karmic/react-app
+    - cd ~/Karmic/react-app
+    - workon karmic
     - nvim
     - Escape
     - ":NERDTreeToggle"
-  - sup:
-    - cd ~/Code/Karmic/sup
+  #- sup:
+    #- cd ~/Karmic/sup
   #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
   #- notes: cd code/notes; vim; tmux send-keys -l iabc;
   - database:  
