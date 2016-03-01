@@ -10,5 +10,12 @@ let NERDTreeIgnore=['\.pyc$', '\.DS_Store$', '__pycache__']
 set rtp+=~/.fzf
 nnoremap <space> :FZF<CR>
 
+" Ag
+nnoremap <leader>a :Ag 
+
 " GitGutter
 nnoremap <leader>tg :GitGutterToggle<CR>
+
+" Fugitive
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>

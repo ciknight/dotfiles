@@ -48,18 +48,34 @@ set showmatch           " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+" Colors
+"set background=light
+"colorscheme solarized
+"
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=0
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
+
+"syntax enable
+"colorscheme solarized
+"let g:solarized_termcolors=256
+"set background=dark
+"highlight clear SignColumn
+"set t_Co=256
+
 " Filetype-based autocommands
-"augroup filetype_js
-    "autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-"augroup END
+augroup filetype_js
+    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+augroup END
 
-"augroup filetype_html
-    "autocmd Filetype html setlocal ts=4 sts=4 sw=4
-"augroup END
+augroup filetype_html
+    autocmd Filetype html setlocal ts=4 sts=4 sw=4
+augroup END
 
-"augroup filetype_css
-    "autocmd Filetype css setlocal ts=2 sts=2 sw=2
-"augroup END
+augroup filetype_css
+    autocmd Filetype css setlocal ts=2 sts=2 sw=2
+augroup END
 
 " omnifuncs
 augroup omnifuncs
@@ -79,3 +95,5 @@ autocmd FileType javascript setlocal omnifunc=tern#Complete
 
   "autocmd FileType javascript setlocal omnifunc=tern#Complete
 "endif
+
+

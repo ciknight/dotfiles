@@ -32,4 +32,7 @@ Plug 'zchee/deoplete-jedi'
 " Javascript
 "Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
+" Colors
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
