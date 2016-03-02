@@ -48,6 +48,10 @@ set showmatch           " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+" No beeping
+set visualbell
+set t_vb=
+
 " Colors
 "set background=light
 "colorscheme solarized
@@ -57,9 +61,9 @@ set hlsearch            " highlight matches
 "let g:solarized_contrast="normal"
 "let g:solarized_visibility="normal"
 
-"syntax enable
-"colorscheme solarized
-"let g:solarized_termcolors=256
+syntax enable
+colorscheme solarized
+let g:solarized_termcolors=256
 "set background=dark
 "highlight clear SignColumn
 "set t_Co=256
