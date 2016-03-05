@@ -3,6 +3,7 @@ autocmd bufwritepost init.vim source ~/.config/nvim/init.vim
 autocmd bufwritepost settings.vim source ~/.config/nvim/init.vim
 autocmd bufwritepost plugins.vim source ~/.config/nvim/init.vim
 autocmd bufwritepost plugin-specific.vim source ~/.config/nvim/init.vim
+autocmd BufWritePost * Neomake
 
 " Leaders
 let mapleader = ','

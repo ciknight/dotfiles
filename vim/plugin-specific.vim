@@ -19,3 +19,8 @@ nnoremap <leader>tg :GitGutterToggle<CR>
 " Fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
+
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_open_list = 0
