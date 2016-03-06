@@ -101,7 +101,7 @@ MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # GNU ls
-alias ls='gls --color=auto'
+# alias ls='gls --color=auto'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -109,3 +109,5 @@ source ~/dotfiles/zsh/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting
 
 export NVM_DIR="/Users/justin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
