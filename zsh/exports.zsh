@@ -11,5 +11,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/neovim/neovim
 export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
-export KARMIC_HOME=/Users/Justin/Karmic
 export WORKON_HOME=~/.config/virtualenvs
+
+export ZSH=$HOME/.oh-my-zsh
+export ANDROID_HOME=/usr/local/opt/android-sdk
