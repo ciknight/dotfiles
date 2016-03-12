@@ -81,12 +81,14 @@
 #
 
 # set status bar
+#set -g status-bg "#373b41"
+#set -g status-fg "#c5c8c6"
 set -g status-bg "#5D5D5D"
 set -g status-fg "#FFE377"
 
 # highlight active window
-setw -g window-status-current-bg "#282a2e"
-setw -g window-status-current-fg "#81a2be"
+setw -g window-status-current-bg "#5D5D5D"
+setw -g window-status-current-fg "#FFE377"
 
 # highlight activity in status bar
 setw -g window-status-activity-fg "#8abeb7"
@@ -187,9 +189,10 @@ bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'seebi/tmux-colors-solarized'
+set -g @plugin 'tmux-plugins/tmux-yank'
+#set -g @plugin 'seebi/tmux-colors-solarized'
 
-set -g @colors-solarized 'light'
+#set -g @colors-solarized 'light
 
 # Initialize Plugins
 run '~/.tmux/plugins/tpm/tpm'

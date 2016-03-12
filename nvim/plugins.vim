@@ -31,6 +31,7 @@ Plug 'zchee/deoplete-jedi'
 
 " Javascript
 "Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'benjie/neomake-local-eslint.vim'
 
 " Colors
 Plug 'altercation/vim-colors-solarized'
