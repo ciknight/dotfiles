@@ -1,23 +1,40 @@
 import os
 import sys
 
-home_dir = os.path.expanduser('~')
+HOME_DIR = os.path.expanduser('~')
+XDG_CONFIG_HOME= os.path.expanduser(os.environ.get('XDG_CONFIG_HOME', '~/.config'))
 
-def walk_and_save(base_path, verbose=False):
+
+def symlink_dotfiles(base_path):
+    """
+    Iterate over all files in base_path.
+    Symlink files with '.home' extension to home directory.
+    Symlink files with '.xdg_home' extension to $XDG_CONFIG_HOME directory.
+    """
     for root, dirs, files in os.walk(base_path):
-        for name in files:
-            if name.split('.')[-1] == 'symlink':
-                filename = '.' + name.rsplit('.', 1)[0]
-                dst = os.path.join(home_dir, filename)
-                src = os.path.join(root, name)
+        for path in files:
+            filename, extension = os.path.splitext(path)
+            if extension == '.symlink':
+                dst = os.path.join(HOME_DIR, '.' + filename)
+                src = os.path.join(root, path)
                 try:
-                    os.remove(filename)
+                    os.remove(dst)
+                except OSError:
+                    pass
+                os.symlink(src, dst)
+        for path in dirs:
+            filename, extension = os.path.splitext(path)
+            if extension == '.config':
+                dst = os.path.join(XDG_CONFIG_HOME, filename)
+                src = os.path.join(root, path)
+                try:
+                    os.remove(dst)
                 except OSError:
                     pass
                 os.symlink(src, dst)
 
 if __name__ == '__main__':
-    file = sys.argv[0]
-    pathname = os.path.dirname(file)
+    file_ = sys.argv[0]
+    pathname = os.path.dirname(file_)
     abspath = os.path.abspath(pathname)
-    walk_and_save(abspath)
+    symlink_dotfiles(abspath)

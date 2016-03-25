@@ -5,6 +5,6 @@ idea/
 .ropeproject/
 *.swp
 
-vim/plugs/
-vim/undo/
+nvim.config/plugs/
+nvim.config/undo/
 zsh/submodules/
