@@ -21,12 +21,15 @@ values."
      auto-completion
      emacs-lisp
      evil-commentary
+     eyebrowse
      git
+     osx
      react
-     themes-megapack
-     (python :variables python-test-runner 'nose)
-     version-control
      syntax-checking
+     spacemacs-layout
+     themes-megapack
+     version-control
+     (python :variables python-test-runner 'nose)
      ;; better-defaults
      ;; markdown
      ;; org
@@ -254,6 +257,16 @@ you should place you code here."
     flycheck-eslintrc "~/code/karmic/.eslintrc"
     flycheck-javascript-eslint-executable "~/code/karmic/node_modules/.bin/eslint"
     flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))
+
+    ;; js2-mode
+    js2-basic-offset 2
+    ;; web-mode
+    css-indent-offset 2
+    web-mode-markup-indent-offset 2
+    web-mode-css-indent-offset 2
+    web-mode-code-indent-offset 2
+    web-mode-attr-indent-offset 2
+
     dotspacemacs-fullnscreen-at-startup t)
 
   ;; Automaticall run "inferior process" when python file loaded.
