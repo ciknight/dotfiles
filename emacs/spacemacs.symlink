@@ -23,21 +23,17 @@ values."
      evil-commentary
      eyebrowse
      git
+     markdown
+     org
      osx
      react
      syntax-checking
-     spacemacs-layout
+     spacemacs-layouts
      themes-megapack
      version-control
      (python :variables python-test-runner 'nose)
-     ;; better-defaults
-     ;; markdown
      ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -240,7 +236,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq-default evil-escape-key-sequence "jj")
+  (setq-default
+   evil-escape-key-sequence "jj"
+   js2-strict-missing-semi-warning nil
+   )
   )
 
 (defun dotspacemacs/user-config ()
@@ -254,18 +253,25 @@ you should place you code here."
     vi-tilde-fringe-mode nil
     neo-theme "nerd"
     flycheck-checkers '(javascript-eslint)
-    flycheck-eslintrc "~/code/karmic/.eslintrc"
-    flycheck-javascript-eslint-executable "~/code/karmic/node_modules/.bin/eslint"
+    ;; flycheck-eslintrc "~/code/karmic/.eslintrc"
+    flycheck-javascript-eslint-executable "~/.nvm/versions/node/v5.8.0/bin/eslint"
     flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))
 
     ;; js2-mode
     js2-basic-offset 2
+    js2-strict-trailing-comma-warning nil
+    js2-strict-missing-semi-warning nil
+
     ;; web-mode
     css-indent-offset 2
     web-mode-markup-indent-offset 2
     web-mode-css-indent-offset 2
     web-mode-code-indent-offset 2
     web-mode-attr-indent-offset 2
+
+
+
+    (with-eval-after-load 'org (setq org-agenda-files '("~/notes")))
 
     dotspacemacs-fullnscreen-at-startup t)
 
@@ -275,6 +281,7 @@ you should place you code here."
     (remove-hook 'python-mode-hook 'run-python-once)
     (run-python))
   (add-hook 'python-mode-hook 'run-python-once)
+
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
