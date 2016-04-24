@@ -18,7 +18,9 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle)
      emacs-lisp
      evil-commentary
      eyebrowse
@@ -242,6 +244,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
    )
   )
 
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -249,6 +252,17 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+
+  ;; Underscores count as word character in Python mode
+  (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  ;; Automaticall run "inferior process" when python file loaded.
+  ;; (defun run-python-once ()
+  ;;   (remove-hook 'python-mode-hook 'run-python-once)
+  ;;   (run-python))
+  ;; (add-hook 'python-mode-hook 'run-python-once)
+
+
   (setq-default
     vi-tilde-fringe-mode nil
     neo-theme "nerd"
@@ -270,19 +284,16 @@ you should place you code here."
     web-mode-attr-indent-offset 2
 
 
+    ;; no more jumping around
+    scroll-margin 5
+    smooth-scroll-margin 5
 
     (with-eval-after-load 'org (setq org-agenda-files '("~/notes")))
 
     dotspacemacs-fullnscreen-at-startup t)
 
-  ;; Automaticall run "inferior process" when python file loaded.
-  ;; Investigate further
-  (defun run-python-once ()
-    (remove-hook 'python-mode-hook 'run-python-once)
-    (run-python))
-  (add-hook 'python-mode-hook 'run-python-once)
-
   )
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
