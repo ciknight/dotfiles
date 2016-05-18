@@ -13,10 +13,12 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
+     markdown
+     markdown
+     ;; ---------------------------------------------------------------- Example
+     ;; of useful layers you may want to use right away. Uncomment some layer
+     ;; names and press <SPC f e R> (Vim style) or <M-m f e R> (Emacs style) to
+     ;; install them.
      ;; ----------------------------------------------------------------
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
@@ -29,6 +31,7 @@ values."
      org
      osx
      react
+     html
      syntax-checking
      spacemacs-layouts
      themes-megapack
@@ -256,12 +259,23 @@ you should place you code here."
   ;; Underscores count as word character in Python mode
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
-  ;; Automaticall run "inferior process" when python file loaded.
-  ;; (defun run-python-once ()
-  ;;   (remove-hook 'python-mode-hook 'run-python-once)
-  ;;   (run-python))
-  ;; (add-hook 'python-mode-hook 'run-python-once)
+  (setq-default indent-tabs-mode nil)
 
+  ;; Automaticall run "inferior process" when python file loaded.
+  (defun run-python-once ()
+    (remove-hook 'python-mode-hook 'run-python-once)
+    (run-python))
+  (add-hook 'python-mode-hook 'run-python-once)
+
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-indent-style 2))
+  ;; (with-eval-after-load 'web-mode
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil)))
 
   (setq-default
     vi-tilde-fringe-mode nil
@@ -269,19 +283,17 @@ you should place you code here."
     flycheck-checkers '(javascript-eslint)
     ;; flycheck-eslintrc "~/code/karmic/.eslintrc"
     flycheck-javascript-eslint-executable "~/.nvm/versions/node/v5.8.0/bin/eslint"
-    flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))
+    ;; flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))
 
     ;; js2-mode
     js2-basic-offset 2
+    js-indent-level 2
+
     js2-strict-trailing-comma-warning nil
     js2-strict-missing-semi-warning nil
 
+
     ;; web-mode
-    css-indent-offset 2
-    web-mode-markup-indent-offset 2
-    web-mode-css-indent-offset 2
-    web-mode-code-indent-offset 2
-    web-mode-attr-indent-offset 2
 
 
     ;; no more jumping around
@@ -291,7 +303,6 @@ you should place you code here."
     (with-eval-after-load 'org (setq org-agenda-files '("~/notes")))
 
     dotspacemacs-fullnscreen-at-startup t)
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -301,7 +312,9 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(neo-theme (quote nerd)))
+ '(js2-strict-trailing-comma-warning nil t)
+ '(neo-theme (quote nerd) t)
+ '(persp-nil-name "Mobile"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
