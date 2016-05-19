@@ -2,3 +2,6 @@
 *.ropeproject
 *.agignore
 *.noseids
+*.idea/
+*.DS_STORE
+*.pyc

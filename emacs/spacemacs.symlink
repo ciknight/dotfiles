@@ -13,8 +13,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     markdown
+     yaml
      ;; ---------------------------------------------------------------- Example
      ;; of useful layers you may want to use right away. Uncomment some layer
      ;; names and press <SPC f e R> (Vim style) or <M-m f e R> (Emacs style) to
@@ -25,20 +24,19 @@ values."
                       auto-completion-tab-key-behavior 'cycle)
      emacs-lisp
      evil-commentary
-     eyebrowse
+     ;; eyebrowse
      git
      markdown
      org
      osx
-     react
      html
+     (javascript :variables javascript-disable-tern-port-files nil)
      syntax-checking
      spacemacs-layouts
      themes-megapack
      version-control
      (python :variables python-test-runner 'nose)
-     ;; org
-     ;; spell-checking
+     ;; writeroom
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -109,7 +107,7 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                :size 13
-                               :weight normal
+                               :weight semibold
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -241,10 +239,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq-default
-   evil-escape-key-sequence "jj"
-   js2-strict-missing-semi-warning nil
-   )
   )
 
 
@@ -256,12 +250,20 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
+  (setq-default indent-tabs-mode nil)
+
   ;; Underscores count as word character in Python mode
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
-  (setq-default indent-tabs-mode nil)
+  (setq powerline-default-separator 'slant)
 
-  ;; Automaticall run "inferior process" when python file loaded.
+  ;; j/k traverse "visual lines"
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  (add-hook 'writeroom-mode-hook #'(lambda () (spacemacs/toggle-vi-tilde-fringe-off)))
+  (custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
+
   (defun run-python-once ()
     (remove-hook 'python-mode-hook 'run-python-once)
     (run-python))
@@ -278,22 +280,31 @@ you should place you code here."
   ;;   (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil)))
 
   (setq-default
+    ;; redefine escape key
+    evil-escape-key-sequence "jj"
+    evil-escape-delay 0.5
     vi-tilde-fringe-mode nil
     neo-theme "nerd"
-    flycheck-checkers '(javascript-eslint)
-    ;; flycheck-eslintrc "~/code/karmic/.eslintrc"
+
+    ;; no more jumping around
+    scroll-margin 5
+    smooth-scroll-margin 5
+
+    ;; linting
+    flycheck-checkers '(javascript-eslint python-flake8)
     flycheck-javascript-eslint-executable "~/.nvm/versions/node/v5.8.0/bin/eslint"
-    ;; flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))
 
     ;; js2-mode
-    js2-basic-offset 2
-    js-indent-level 2
-
-    js2-strict-trailing-comma-warning nil
-    js2-strict-missing-semi-warning nil
-
+    ;; js2-basic-offset 2
+    ;; js-indent-level 2
+    ;; js2-strict-trailing-comma-warning nil
+    ;; js2-strict-missing-semi-warning nil
 
     ;; web-mode
+    ;; web-mode-markup-indent-offset 2
+    ;; web-mode-css-indent-offset 2
+    ;; web-mode-code-indent-offset 2
+    ;; web-mode-indent-style 2
 
 
     ;; no more jumping around
