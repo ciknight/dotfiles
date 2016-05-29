@@ -18,3 +18,8 @@ export WORKON_HOME=~/.config/virtualenvs
 
 export ZSH=$HOME/.oh-my-zsh
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# less syntax highlighting
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS='-R'

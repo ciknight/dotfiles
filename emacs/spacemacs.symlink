@@ -34,6 +34,7 @@ values."
      syntax-checking
      spacemacs-layouts
      themes-megapack
+     theming
      version-control
      (python :variables python-test-runner 'nose)
      ;; writeroom
@@ -269,21 +270,19 @@ you should place you code here."
     (run-python))
   (add-hook 'python-mode-hook 'run-python-once)
 
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-indent-style 2))
-  ;; (with-eval-after-load 'web-mode
-  ;;   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-  ;;   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-  ;;   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
-  ;;   (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil)))
+  ;; j/k traverse "visual lines"
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
   (setq-default
     ;; redefine escape key
     evil-escape-key-sequence "jj"
     evil-escape-delay 0.5
+
+    ;; no tildes
     vi-tilde-fringe-mode nil
+
+    ;; Make Neotree look pretty
     neo-theme "nerd"
 
     ;; no more jumping around
@@ -291,8 +290,8 @@ you should place you code here."
     smooth-scroll-margin 5
 
     ;; linting
-    flycheck-checkers '(javascript-eslint python-flake8)
-    flycheck-javascript-eslint-executable "~/.nvm/versions/node/v5.8.0/bin/eslint"
+    flycheck-checkers '(javascript-eslint
+                        python-flake8)
 
     ;; js2-mode
     ;; js2-basic-offset 2
@@ -306,15 +305,11 @@ you should place you code here."
     ;; web-mode-code-indent-offset 2
     ;; web-mode-indent-style 2
 
-
     ;; no more jumping around
     scroll-margin 5
     smooth-scroll-margin 5
-
-    (with-eval-after-load 'org (setq org-agenda-files '("~/notes")))
-
-    dotspacemacs-fullnscreen-at-startup t)
-  )
+    )
+ )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -323,13 +318,13 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(js2-strict-trailing-comma-warning nil t)
- '(neo-theme (quote nerd) t)
- '(persp-nil-name "Mobile"))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;; '(default ((t (:inherit nil :stipple nil :background "#2d2d2d" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 130 :width normal :foundry "nil" :family "Source Code Pro"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ )

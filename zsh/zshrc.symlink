@@ -84,3 +84,6 @@ export NVM_DIR="/Users/justin/.nvm"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 nvm use stable --silent
+
+# Prompt symbol
+PURE_PROMPT_SYMBOL=$
