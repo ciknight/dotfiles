@@ -1,8 +1,0 @@
-# Compiled Python files
-*.pyc
-
-# Folder view configuration files
-.DS_Store
-
-# IDE
-.idea

@@ -1,0 +1,13 @@
+{
+ "env": {
+  "SHELL_TYPE": "best"
+ },
+ "foreign_shells": [
+  {
+   "shell": "zsh"
+  }
+ ],
+ "xontribs": [
+  "mpl"
+ ]
+}

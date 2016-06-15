@@ -24,7 +24,6 @@ values."
                       auto-completion-tab-key-behavior 'cycle)
      emacs-lisp
      evil-commentary
-     ;; eyebrowse
      git
      markdown
      org
@@ -37,7 +36,8 @@ values."
      theming
      version-control
      (python :variables python-test-runner 'nose)
-     ;; writeroom
+     writeroom
+     shell
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -262,9 +262,6 @@ you should place you code here."
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-  (add-hook 'writeroom-mode-hook #'(lambda () (spacemacs/toggle-vi-tilde-fringe-off)))
-  (custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
-
   (defun run-python-once ()
     (remove-hook 'python-mode-hook 'run-python-once)
     (run-python))
@@ -274,13 +271,13 @@ you should place you code here."
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+  ;; Turn off the tildes in the fringe
+  (global-vi-tilde-fringe-mode -1)
+
   (setq-default
     ;; redefine escape key
     evil-escape-key-sequence "jj"
     evil-escape-delay 0.5
-
-    ;; no tildes
-    vi-tilde-fringe-mode nil
 
     ;; Make Neotree look pretty
     neo-theme "nerd"
