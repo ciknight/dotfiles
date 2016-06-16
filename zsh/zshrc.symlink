@@ -34,3 +34,41 @@ nvm use stable --silent
 # pyenv-related initialization
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+
+###############
+### Aliases ###
+###############
+
+alias gx="git diff | gitx"
+alias gsx="git diff --staged | gitx"
+alias gox="git diff origin/master | gitx"
+
+alias backend="cd ~/karmic/karmicapp/src && workon karmic && clear"
+alias mobile="cd ~/karmic/mobile-app && nvm use 5.5.0 && clear"
+
+alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+
+alias adbr="adb -e shell input keyevent 82"
+
+
+###############
+### Exports ###
+###############
+
+export EDITOR=/usr/local/bin/nvim
+export VISUAL=/usr/local/bin/nvim
+
+#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/deployd/bin:/usr/local/MacGPG2/bin:/usr/local/sbin:/Users/Justin/bin:/Users/Justin/Library/Android/sdk/platform-tools:/Applications/Racketv6.2/bin:/Users/Justin/bin/didit-cli-client:/Users/justin/bin/neo4j-community-2.2.3/bin:/Users/justin/.rvm/"
+
+PATH=$PATH:/usr/local/bin
+
+export ZSH=$HOME/.oh-my-zsh
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export PYENV_ROOT=~/.pyenv
+
+# less syntax highlighting
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS='-R'

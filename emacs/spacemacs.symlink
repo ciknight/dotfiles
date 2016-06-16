@@ -36,7 +36,6 @@ values."
      theming
      version-control
      (python :variables python-test-runner 'nose)
-     writeroom
      shell
      )
    ;; List of additional packages that will be installed without being
@@ -107,7 +106,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 16
                                :weight semibold
                                :width normal
                                :powerline-scale 1.1)
@@ -278,6 +277,9 @@ you should place you code here."
     ;; redefine escape key
     evil-escape-key-sequence "jj"
     evil-escape-delay 0.5
+
+    ;; pyenv
+    ;; python-auto-set-local-pyenv-version on-project-switch
 
     ;; Make Neotree look pretty
     neo-theme "nerd"
