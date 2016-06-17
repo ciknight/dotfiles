@@ -1,12 +1,14 @@
 {
  "env": {
-  "SHELL_TYPE": "best"
+  "SHELL_TYPE": "best",
  },
  "foreign_shells": [
   {
-   "shell": "zsh"
+   "shell": "zsh",
+   "extra_args": ["--rcfile", "~/.zshrc"]
   }
  ],
+ "PROMPT" = "{GREEN}{user}@{hostname} {BLUE}{cwd}{branch_color}{curr_branch} {YELLOW}\n$ {WHITE}'",
  "xontribs": [
   "mpl"
  ]
