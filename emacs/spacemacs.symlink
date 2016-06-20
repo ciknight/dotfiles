@@ -99,6 +99,7 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
+                         sanityinc-tomorrow-eighties
                          zenburn
                          smyx)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -303,6 +304,9 @@ you should place you code here."
     ;; web-mode-css-indent-offset 2
     ;; web-mode-code-indent-offset 2
     ;; web-mode-indent-style 2
+
+
+    (setq explicit-shell-file-name "~/.pyenvs/versions/3.5.1/xonsh")
 
     ;; no more jumping around
     scroll-margin 5

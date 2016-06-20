@@ -1,0 +1,22 @@
+
+def ipython_profile():
+    ipython profile create
+
+$PATH = [
+    '/usr/local/bin',
+    '/usr/local/sbin',
+    '/Users/justin/.pyenv/shims',
+    '/usr/local/bin',
+    '/Users/justin/.nvm/versions/node/v5.8.0/bin',
+    '/usr/bin',
+    '/bin',
+    '/usr/sbin',
+    '/sbin',
+    '/Users/justin/.fzf/bin',
+    '/Users/justin/.rvm/bin"'
+]
+
+source-bash 'eval "$(pyenv init -)"'
+
+$PROMPT="""{GREEN}{user}@{hostname} {BLUE}{cwd} {branch_color}{curr_branch}
+{YELLOW}$ {NO_COLOR}"""

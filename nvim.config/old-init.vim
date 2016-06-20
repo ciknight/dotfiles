@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugs')
+call plug#begin('~/.config/nvim/plugs')
 
 " essentials
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
@@ -32,7 +32,7 @@ Plug 'klen/python-mode'
 
 " colors
 Plug 'junegunn/seoul256.vim'
-"Plug 'stockninja/tomorrow-theme', {'rtp': 'vim' }
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim' }
 Plug 'andrwb/vim-lapis256'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
@@ -56,7 +56,7 @@ call plug#end()
 syntax enable
 
 "set background=light
-colorscheme tomorrow-night
+colorscheme tomorrow-night-eighties
 
 "set background=dark
 "colorscheme solarized
