@@ -20,3 +20,4 @@ source-bash 'eval "$(pyenv init -)"'
 
 $PROMPT="""{GREEN}{user}@{hostname} {BLUE}{cwd} {branch_color}{curr_branch}
 {YELLOW}$ {NO_COLOR}"""
+$VIRTUALENV_HOME="~/virtualenvs"
