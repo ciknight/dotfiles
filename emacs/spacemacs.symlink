@@ -22,6 +22,7 @@ values."
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle)
+     c-c++
      emacs-lisp
      evil-commentary
      git
@@ -37,6 +38,7 @@ values."
      version-control
      (python :variables python-test-runner 'nose)
      shell
+     extra-langs
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -240,6 +242,34 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;; for reference
+  ;;   (background . "#2d2d2d")
+  ;;   (current-line . "#393939")
+  ;;   (selection . "#515151")
+  ;;   (foreground . "#cccccc")
+  ;;   (comment . "#999999")
+  ;;   (red . "#f2777a")
+  ;;   (orange . "#f99157")
+  ;;   (yellow . "#ffcc66")
+  ;;   (green . "#99cc99")
+  ;;   (aqua . "#66cccc")
+  ;;   (blue . "#6699cc")
+  ;;   (purple . "#cc99cc"))
+
+  ;; todo:
+  ;; (cdr (assoc 'yellow
+  ;;             (cdr (assoc 'eighties color-theme-sanityinc-tomorrow-colors))))
+  ;; http://emacs.stackexchange.com/questions/3197/best-way-to-retrieve-values-in-nested-assoc-lists/3208#3208
+  ;; or actually just copy over new vars
+
+  (setq-default
+   theming-modifications
+   '((sanityinc-tomorrow-eighties
+     (font-lock-constant-face :foreground "#cccccc")
+     (font-lock-function-name-face :foreground "#6699cc")
+     (font-lock-variable-name-face :foreground "#cccccc")
+     (font-lock-string-face :foreground "#ffcc66"))))
   )
 
 
@@ -290,8 +320,11 @@ you should place you code here."
     smooth-scroll-margin 5
 
     ;; linting
-    flycheck-checkers '(javascript-eslint
-                        python-flake8)
+    flycheck-checkers '(
+                        javascript-eslint
+                        python-flake8
+                        c/c++-clang
+                        )
 
     ;; js2-mode
     ;; js2-basic-offset 2
@@ -306,12 +339,16 @@ you should place you code here."
     ;; web-mode-indent-style 2
 
 
-    (setq explicit-shell-file-name "~/.pyenvs/versions/3.5.1/xonsh")
+    (set explicit-shell-file-name "~/.pyenv/versions/3.5.1/xonsh")
 
     ;; no more jumping around
     scroll-margin 5
     smooth-scroll-margin 5
-    )
+  )
+
+
+
+
  )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -321,13 +358,24 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ '(flymake-allowed-file-name-masks
+   (quote
+    (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
+     ("\\.xml\\'" flymake-xml-init nil nil)
+     ("\\.html?\\'" flymake-xml-init nil nil)
+     ("\\.cs\\'" flymake-simple-make-init nil nil)
+     ("\\.p[ml]\\'" flymake-perl-init nil nil)
+     ("\\.php[345]?\\'" flymake-php-init nil nil)
+     ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup nil)
+     ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup nil)
+     ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup nil)
+     ("\\.tex\\'" flymake-simple-tex-init nil nil)
+     ("\\.idl\\'" flymake-simple-make-init nil nil)
+     (":w\\.ino\\'" flymake-simple-make-init nil nil)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(default ((t (:inherit nil :stipple nil :background "#2d2d2d" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 130 :width normal :foundry "nil" :family "Source Code Pro"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- )
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))

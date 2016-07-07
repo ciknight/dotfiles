@@ -1,6 +1,9 @@
 brew install pyenv
 xcode-select --install
-brew install pyenv-virtualenv
 
-bullets
-- create a bunch of pyenv versions
+Arduino
+- virtualenv with pyserial installed.
+- clone [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile) project to ~/Arduino/ directory.
+
+ruby:
+- gem install rbenv

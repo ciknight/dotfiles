@@ -68,3 +68,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:/Users/justin/.pyenv/shims:/usr/loca
 
 # pyenv-related initialization
 eval "$(pyenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino

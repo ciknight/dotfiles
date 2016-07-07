@@ -6,6 +6,8 @@ $PATH = [
     '/usr/local/bin',
     '/usr/local/sbin',
     '/Users/justin/.pyenv/shims',
+    '/Users/justin/.rbenv/shims',
+    '/Users/justin/bin',
     '/usr/local/bin',
     '/Users/justin/.nvm/versions/node/v5.8.0/bin',
     '/usr/bin',
@@ -23,3 +25,10 @@ $PROMPT="""{GREEN}{user}@{hostname} {BLUE}{cwd} {branch_color}{curr_branch}
 {YELLOW}$ {NO_COLOR}"""
 $EDITOR = 'nvim'
 $VIRTUALENV_HOME= $HOME + "/.config/virtualenvs"
+
+# Arduino Dev
+$ARDUINO_DIR = "/Applications/Arduino.app/Contents/Java"
+$ARDMK_DIR = "/Users/justin/Arduino/Arduino-Makefile"
+$AVR_TOOLS_DIR = "/Applications/Arduino.app/Contents/Java/hardware/tools/avr"
+
+aliases['arduino'] = ['/Applications/Arduino.app/Contents/MacOS/Arduino']
