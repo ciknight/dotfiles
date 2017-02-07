@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'mikewest/vimroom'
 
 " Navigation
 Plug 'scrooloose/nerdtree'

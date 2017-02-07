@@ -13,6 +13,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     typescript
      yaml
      ;; ---------------------------------------------------------------- Example
      ;; of useful layers you may want to use right away. Uncomment some layer
@@ -21,6 +22,7 @@ values."
      ;; ----------------------------------------------------------------
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
+                      auto-completion-enable-snippets-in-popup t
                       auto-completion-tab-key-behavior 'cycle)
      c-c++
      emacs-lisp
@@ -30,15 +32,21 @@ values."
      org
      osx
      html
-     (javascript :variables javascript-disable-tern-port-files nil)
+     ;; (javascript :variables javascript-disable-tern-port-files nil)
+     react
      syntax-checking
-     spacemacs-layouts
+     (spacemacs-layouts :variables layouts-enable-autosave t layouts-autosave-delay 300 dotspacemacs-auto-resume-layouts t)
      themes-megapack
      theming
      version-control
      (python :variables python-test-runner 'nose)
      shell
      extra-langs
+     evernote
+     writeroom
+     ;; (wakatime :variables
+     ;;           wakatime-api-key  "e1b030e3-3aa8-41d3-97d2-710365f52f12"
+     ;;           wakatime-cli-path "/Users/justin/.pyenv/shims/wakatime")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -280,6 +288,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   (setq-default indent-tabs-mode nil)
 
@@ -327,19 +337,19 @@ you should place you code here."
                         )
 
     ;; js2-mode
-    ;; js2-basic-offset 2
-    ;; js-indent-level 2
-    ;; js2-strict-trailing-comma-warning nil
-    ;; js2-strict-missing-semi-warning nil
+    js2-basic-offset 2
+    js-indent-level 2
+    js2-strict-trailing-comma-warning nil
+    js2-strict-missing-semi-warning nil
 
     ;; web-mode
-    ;; web-mode-markup-indent-offset 2
-    ;; web-mode-css-indent-offset 2
-    ;; web-mode-code-indent-offset 2
-    ;; web-mode-indent-style 2
+    web-mode-markup-indent-offset 2
+    web-mode-css-indent-offset 2
+    web-mode-code-indent-offset 2
+    web-mode-indent-style 2
 
 
-    (set explicit-shell-file-name "~/.pyenv/versions/3.5.1/xonsh")
+    (set explicit-shell-file-name "xonsh")
 
     ;; no more jumping around
     scroll-margin 5
