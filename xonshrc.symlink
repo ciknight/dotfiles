@@ -1,6 +1,7 @@
 
-def ipython_profile():
-    ipython profile create
+#####################
+### Env Variables ###
+#####################
 
 $PATH = [
     '/usr/local/bin',
@@ -8,6 +9,7 @@ $PATH = [
     '/Users/justin/.pyenv/shims',
     '/Users/justin/.rbenv/shims',
     '/Users/justin/bin',
+    '/Users/justin/bin/arcanist/bin',
     '/usr/local/bin',
     '/Users/justin/.nvm/versions/node/v5.8.0/bin',
     '/usr/bin',
@@ -19,9 +21,11 @@ $PATH = [
     '/Users/justin/bin/arcanist/bin',
 ]
 
-source-bash 'eval "$(pyenv init -)"'
+$XONSH_COLOR_STYLE = 'default'
+$XONSH_TRACEBACK_LOGFILE = $HOME + '/xonsh.log'
 
-$PROMPT="""{GREEN}{user}@{hostname} {BLUE}{cwd} {branch_color}{curr_branch}
+# Prompt
+$PROMPT="""{GREEN}{user}@{hostname} {WHITE}{env_name:{} }{BLUE}{cwd} {branch_color}{curr_branch}
 {YELLOW}$ {NO_COLOR}"""
 $EDITOR = 'nvim'
 $VIRTUALENV_HOME= $HOME + "/.config/virtualenvs"
@@ -31,4 +35,15 @@ $ARDUINO_DIR = "/Applications/Arduino.app/Contents/Java"
 $ARDMK_DIR = "/Users/justin/Arduino/Arduino-Makefile"
 $AVR_TOOLS_DIR = "/Applications/Arduino.app/Contents/Java/hardware/tools/avr"
 
+
+###############
+### Aliases ###
+###############
+
 aliases['arduino'] = ['/Applications/Arduino.app/Contents/MacOS/Arduino']
+# aliases['python'] = ['/usr/local/bin/python3']
+# aliases['pip'] = ['/usr/local/bin/pip3']
+
+# for pyenv ... delete this?
+source-bash 'eval "$(pyenv init -)"'
+

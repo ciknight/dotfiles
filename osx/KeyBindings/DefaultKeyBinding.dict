@@ -1,0 +1,7 @@
+/* -*- coding: utf-8 -*- */
+/* Symlink to ~/Library/KeyBindings/DefaultKeyBinding.dict */
+
+{
+"^m"     = ("insertText:", "\U2234");
+"^n"     = ("insertText:", "\U2713");
+}

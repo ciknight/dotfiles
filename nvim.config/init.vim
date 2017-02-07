@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'amix/vim-zenroom'
 
 " colors
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim' }

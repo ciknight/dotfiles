@@ -1,0 +1,66 @@
+# ~/.tmuxinator/karmic.yml
+
+name: karmic
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+windows:
+# - backend:
+#     layout: c654,204x51,0,0{102x51,0,0[102x25,0,0,1,102x25,0,26,10],101x51,103,0,9}
+#     panes:
+#       - vim: cd code/karmic/karmicapp; tmux send-keys C-l
+#       - top
+#       - # nothing
+  - shell:
+      #layout: c654,204x51,0,0{102x51,0,0[102x25,0,0,1,102x25,0,26,10],101x51,103,0,9}
+      layout: 5139,318x83,0,0{159x83,0,0[159x41,0,0,9,159x41,0,42,12],158x83,160,0[158x41,160,0,10,158x41,160,42,11]}
+      panes:
+        - cd ~/Karmic
+        - cd ~/Karmic
+        - cd ~/Karmic
+        - cd ~/Karmic
+  - backend: 
+    - cd ~/Karmic/karmicapp/src
+    - workon karmic
+    - nvim
+    #- Escape
+    - ":NERDTree karmic"
+  - frontend:
+    #- cd ~/Code/Karmic/web-frontend-code
+    - cd ~/Karmic/react-app
+    - workon karmic
+    - nvim
+    - Escape
+    - ":NERDTreeToggle"
+  #- sup:
+    #- cd ~/Karmic/sup
+  #- notes: cd code/notes; tmux send-keys C-l; vim; tmux send-keys "C-,"; tmux send-keys N;
+  #- notes: cd code/notes; vim; tmux send-keys -l iabc;
+  - database:  
+      layout: 4525,204x63,0,0{102x63,0,0,10,101x63,103,0,12}   # vertical split
+      panes: 
+        - nvim
+        - psql && clear
+  - dotfiles:
+    - cd ~/dotfiles
+    - nvim
+    - Escape
+    - ":NERDTreeToggle"
+
