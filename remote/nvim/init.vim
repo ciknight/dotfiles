@@ -1,8 +1,31 @@
-" Plugins
+"""""""""""
+" Plugins "
+"""""""""""
 call plug#begin('~/.config/nvim/plugs')
 Plug 'szw/vim-maximizer'
 Plug 'klen/python-mode'
+Plug 'scrooloose/nerdcommenter'
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
+
+"""""""""""""""""
+" Configuration "
+"""""""""""""""""
+
+" Vanilla
+if has("termguicolors")
+  set termguicolors
+endif
+let base16colorspace=256  " for ^^
+colorscheme base16-eighties
+
+" Plugins
+let g:NERDSpaceDelims = 1
+
+""""""""""""
+" Mappings "
+""""""""""""
 
 " Personal
 inoremap jj <ESC>
@@ -24,7 +47,7 @@ nmap <leader>wm :MaximizerToggle<CR>
 
 " File
 nmap <leader>fs :w<CR>
-nmap <leader>fed :e ~/dotfile/init.vim<CR>
+nmap <leader>fed :e ~/.config/nvim/init.vim<CR>
 nmap <leader>feR :source ~/.config/nvim/init.vim<CR>
 
 " Buffers
