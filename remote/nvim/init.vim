@@ -3,10 +3,12 @@
 """""""""""
 call plug#begin('~/.config/nvim/plugs')
 Plug 'szw/vim-maximizer'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'klen/python-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
-Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 """""""""""""""""
@@ -14,14 +16,40 @@ call plug#end()
 """""""""""""""""
 
 " Vanilla
+colorscheme base16-eighties
+let base16colorspace=256  " for ^^
+
+" FIXME: Hack for alacritty: https://github.com/jwilm/alacritty/issues/26
 if has("termguicolors")
   set termguicolors
 endif
-let base16colorspace=256  " for ^^
-colorscheme base16-eighties
 
 " Plugins
 let g:NERDSpaceDelims = 1
+
+" Change mappings.
+" FIXME: I added this b/c I couldn't 
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+		\ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 """"""""""""
 " Mappings "
@@ -55,6 +83,20 @@ nmap <leader>bb :buffers<CR>
 
 " On/Off
 nmap <leader>qq :qa<CR>
+
+" Commenting
+" TODO: How should I document NerdCommenter keybindings?
+" It's nice for this to be like documentation for every feature I use
+
+" Package Management
+nmap <leader>pi :PlugInstall<CR>
+nmap <leader>pc :PlugClean<CR>
+nmap <leader>pu :PlugUpdate<CR>
+
+" Denite
+nnoremap <leader>/ :Denite grep<cr>
+nnoremap <leader>ff :Denite file_rec<cr>
+nnoremap <leader><leader> :
 
 " Random Ergonomics
 inoremap jj <ESC>
