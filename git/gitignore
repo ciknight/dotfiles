@@ -1,0 +1,26 @@
+# Vim buffers
+*.swp
+
+# Rope refactoring
+*.ropeproject
+
+# Ag configs
+*.agignore
+
+# Nosetests
+*.noseids
+
+# Tern
+*.tern-port
+
+# Unsaved Spacemacs buffers
+*.#*
+
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+*.DS_Store
+
+# Jetbrains IDE crap
+*.idea

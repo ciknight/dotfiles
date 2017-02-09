@@ -1,0 +1,13 @@
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
+export PATH=$PATH:$HOME/Library/Android/sdk/tools
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH=$PATH:$HOME/.fastlane/bin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
+export PATH=$PATH:$HOME/bin/kakoune/src
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin/
+
+export WORKON_HOME=~/.config/virtualenvs
+export ANDROID_HOME=~/Library/Android/sdk
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/credentials/Round\ Robin\ Prod-46aa640ddae7.json

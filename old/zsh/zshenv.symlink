@@ -1,0 +1,12 @@
+export WORKON_HOME=~/.config/virtualenvs
+export ANDROID_HOME=~/Library/Android/sdk
+
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/.pyenv/shims:/usr/local/bin:$HOME/.nvm/versions/node/v5.8.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.fzf/bin:$HOME/.rvm/bin:$HOME/bin/arcanist/bin/:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools:$HOME/.fastlane/bin"
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=$PATH:$HOME/bin/google-cloud-sdk/bin
+export PATH=$PATH:$HOME/bin/kakoune/src
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin/
+
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/credentials/Round\ Robin\ Prod-46aa640ddae7.json

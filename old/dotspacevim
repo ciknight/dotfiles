@@ -1,0 +1,29 @@
+" You can enable the existing layers in space-vim and
+" exclude the partial plugins in a certain layer.
+" The command Layer and Exlcude are vaild in the function Layers().
+function! Layers()
+
+    " Default layers, recommended!
+    Layer 'fzf'
+    Layer 'unite'
+    Layer 'better-defaults'
+    Layer 'ycmd'
+    Layer 'syntax-checking'
+    Layer 'python'
+    Layer 'programming'
+
+endfunction
+
+" Put your private plugins here, e.g., change the colorscheme.
+function! UserInit()
+    " Install private plugins
+    " Plug 'morhetz/gruvbox'
+
+endfunction
+
+" Override the existing configurations and add extras here.
+function! UserConfig()
+
+    " color gruvbox
+
+endfunction

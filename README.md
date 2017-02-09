@@ -1,4 +1,11 @@
-My Dotfiles
------------
+### Adding a user
 
-* For tmuxinator to work, make sure you symlink `~/.tmuxinator/` to `~/.dotfiles/tmux/tmuxinator/` like so: `ln -s ~/.dotfiles/tmux/tmuxinator/ ~/.tmuxinator`
+> useradd justin
+> passwd justin
+
+Then set password authentication to `yes` in `/etc/ssh/sshd_config`
+
+Reload ssh service with `sudo service ssh reload`
+
+### Using Mosh
+> mosh --ssh="ssh -i path/to/key.pem" user@host

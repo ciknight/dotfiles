@@ -1,0 +1,23 @@
+# ~/.tmuxinator/native.yml
+
+name: native
+root: ~/
+
+windows:
+  - shell: 
+      layout: 4525,204x63,0,0{102x63,0,0,10,101x63,103,0,12}   # vertical split
+      panes:
+        - cd ~/code/karmic
+        - cd ~/code/karmic
+  - code:
+    - cd ~/Code/Karmic
+    - workon karmic
+    - nvim
+    - Escape
+    - ":NERDTreeToggle"
+  - examples:
+      layout: 4525,204x63,0,0{102x63,0,0,10,101x63,103,0,12}   # vertical split
+      panes:
+        - cd ~/code/karmic
+        - cd ~/code/react-native
+
