@@ -1,3 +1,7 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Inspired by https://github.com/blaenk/dots/blob/master/vim/.vimrc "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 hi StatusLine guibg=#3d3d3d
 hi StatusLineNC guibg=#3d3d3d
 hi SLArrows guifg=#99cc99 guibg=#3d3d3d
@@ -60,18 +64,12 @@ function! Status(winnum)
   "   operate on the currently focused window
 
   function! Column()
-    let vc = virtcol('.')
     let ruler_width = max([strlen(line('$')), (&numberwidth - 1)]) + &l:foldcolumn
-    let column_width = strlen(vc)
-    let padding = ruler_width - column_width
+    let padding = ruler_width
     let column = ''
 
-    if padding <= 0
-      let column .= vc
-    else
-      " + 1 because for some reason vim eats one of the spaces
-      let column .= repeat(' ', padding + 1) . vc
-    endif
+    " + 1 because for some reason vim eats one of the spaces
+    let column .= repeat(' ', padding + 1)
 
     return column . ' '
   endfunction
@@ -123,7 +121,7 @@ function! Status(winnum)
   endif
 
   if !empty(head)
-    let stat .= Color(active, 'SLBranch', ' ← ') . head . ' '
+    let stat .= Color(active, 'SLBranch', ' ← ') . head . ' ' . '%L '
   endif
 
   return stat
