@@ -1,15 +1,24 @@
 """""""""""
 " Plugins "
 """""""""""
+
 call plug#begin('~/.config/nvim/plugs')
+
 Plug 'szw/vim-maximizer'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'klen/python-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-fugitive'
+Plug 'szw/vim-tags'
+Plug 'MattesGroeger/vim-bookmarks'
+
+" Languages
+Plug 'klen/python-mode'
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 """""""""""""""""
@@ -17,6 +26,7 @@ call plug#end()
 """""""""""""""""
 
 " Vanilla
+set number
 colorscheme base16-eighties
 let base16colorspace=256  " for ^^
 
@@ -52,6 +62,15 @@ call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
+source ~/dotfiles/nvim/status.vim
+
+" Bookmarks
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '>>'
+let g:bookmark_annotation_sign = '##'
+let g:bookmark_highlight_lines = 1
+
 """"""""""""
 " Mappings "
 """"""""""""
@@ -79,17 +98,18 @@ map <leader>ff :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>fs :w<CR>
 
 " Dotfiles
-nmap <leader>dze :e ~/.zshrc<CR>
-nmap <leader>dvr :echo 'todo'<CR>
-nmap <leader>dpe :e ~/.zshenv<CR>
-nmap <leader>dpr :echo 'todo'<CR>
-nmap <leader>dte :e ~/.tmux.conf<CR>
-nmap <leader>dtr :echo 'todo'<CR>
-nmap <leader>dve :e ~/.config/nvim/init.vim<CR>
-nmap <leader>dvr :source ~/.config/nvim/init.vim<CR>
+nmap <leader>dez :e ~/.zshrc<CR>
+nmap <leader>drz :echo 'todo'<CR>
+nmap <leader>dep :e ~/.zshenv<CR>
+nmap <leader>drp :echo 'todo'<CR>
+nmap <leader>det :e ~/.tmux.conf<CR>
+nmap <leader>drt :echo 'todo'<CR>
+nmap <leader>dev :e ~/.config/nvim/init.vim<CR>
+nmap <leader>drv :source ~/.config/nvim/init.vim<CR>
 
 " Buffers
 nmap <leader>bb :buffers<CR>
+nmap <leader>bl :b#<CR>
 
 " On/Off
 nmap <leader>qq :qa<CR>
@@ -108,6 +128,24 @@ nnoremap <leader>/ :Denite grep<cr>
 nnoremap <leader>ff :Denite file_rec<cr>
 map <leader>fe :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader><leader> :
+
+" Tags
+" TODO: tj
+nmap <leader>tt :TagbarToggle<CR>
+nmap <leader>tg :TagbarGenerate<CR>
+
+" Bookmarks
+nmap <leader>mt <plug>BookmarkToggle<cr>
+nmap <leader>mi <plug>BookmarkAnnotate 
+nmap <leader>ma <plug>BookmarkShowAll<cr>
+nmap <leader>mn <plug>BookmarkNext<cr>
+nmap <leader>mp <plug>BookmarkPrev<cr>
+nmap <leader>mc <plug>BookmarkClear<cr>
+nmap <leader>mx <plug>BookmarkClearAll<cr>
+nmap <leader>mk <plug>BookmarkMoveUp<cr>
+nmap <leader>mj <plug>BookmarkMoveDown<cr>
+nmap <leader>mfs <plug>BookmarkSave 
+nmap <leader>mfl <plug>BookmarkLoad 
 
 " Random Ergonomics
 inoremap jj <ESC>

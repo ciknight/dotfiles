@@ -24,3 +24,5 @@
 
 # Jetbrains IDE crap
 *.idea
+
+*Session.vim

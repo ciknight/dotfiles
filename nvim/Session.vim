@@ -7,9 +7,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +99 init.vim
+badd +1 init.vim
 badd +5 ~/.tmux.conf
-badd +0 ~/dotfiles/git/gitignore
+badd +1 ~/dotfiles/git/gitignore
 argglobal
 silent! argdel *
 edit init.vim
@@ -60,11 +60,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 10) / 21)
+let s:l = 22 - ((14 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+22
 normal! 0
 lcd ~/dotfiles/nvim
 wincmd w

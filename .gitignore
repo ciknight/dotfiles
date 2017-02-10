@@ -8,3 +8,5 @@ idea/
 nvim.config/plugs/
 nvim.config/undo/
 zsh/submodules/
+tags
+test-nvim/
