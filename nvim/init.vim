@@ -4,20 +4,30 @@
 
 call plug#begin('~/.config/nvim/plugs')
 
-Plug 'szw/vim-maximizer'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'scrooloose/nerdcommenter'
-Plug 'chriskempson/base16-vim'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-obsession'
+" Source Control
 Plug 'tpope/vim-fugitive'
-Plug 'szw/vim-tags'
+Plug 'airblade/vim-gitgutter'
+
+" Navigation
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'szw/vim-tags'
+Plug 'szw/vim-maximizer'
+Plug 'mhinz/vim-startify'
+
+" Editing
+Plug 'scrooloose/nerdcommenter'
+
+" Colors
+Plug 'chriskempson/base16-vim'
 
 " Languages
 Plug 'klen/python-mode'
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
+
+" Other
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'tpope/vim-obsession'
 
 call plug#end()
 
