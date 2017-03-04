@@ -12,7 +12,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'szw/vim-tags'
 Plug 'szw/vim-maximizer'
-Plug 'mhinz/vim-startify'
 
 " Editing
 Plug 'scrooloose/nerdcommenter'
@@ -22,6 +21,10 @@ Plug 'chriskempson/base16-vim'
 
 " Languages
 Plug 'klen/python-mode'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'tpope/vim-dispatch'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 " Plug 'rust-lang/rust.vim'
 
 " Other
@@ -72,6 +75,8 @@ call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
+let g:OmniSharp_selector_ui = 'denite'
+
 source ~/dotfiles/nvim/status.vim
 
 " Bookmarks
@@ -80,6 +85,15 @@ highlight BookmarkLine ctermbg=194 ctermfg=NONE
 let g:bookmark_sign = '>>'
 let g:bookmark_annotation_sign = '##'
 let g:bookmark_highlight_lines = 1
+
+" JS
+let g:jsx_ext_required = 0
+
+
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
+" Pylint configuration file
+let g:pymode_lint_config = '$HOME/pylint.rc'
 
 """"""""""""
 " Mappings "
@@ -156,6 +170,10 @@ nmap <leader>mk <plug>BookmarkMoveUp<cr>
 nmap <leader>mj <plug>BookmarkMoveDown<cr>
 nmap <leader>mfs <plug>BookmarkSave 
 nmap <leader>mfl <plug>BookmarkLoad 
+
+" Git
+nmap <leader>gs :Gstatus<cr>
+
 
 " Random Ergonomics
 inoremap jj <ESC>
