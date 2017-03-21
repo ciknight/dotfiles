@@ -1,0 +1,45 @@
+export ZSH=~/.oh-my-zsh
+export UPDATE_ZSH_DAYS=1
+export LANG=en_US.UTF-8
+export EDITOR='nvim'
+
+# Uncomment when we get Alacritty.app
+# export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
+export ZSH_TMUX_AUTOQUIT=false
+
+ZSH_THEME="dst"
+DISABLE_AUTO_TITLE="true"
+
+plugins=(
+  thought-provoking-cowsay
+  git
+  tmux
+  colored-man-pages
+)
+
+source $ZSH/oh-my-zsh.sh
+
+alias alacritty='~/bin/alacritty/target/release/alacritty'
+alias ctags="`brew --prefix`/bin/ctags"
+
+# FIXME: tmux-yank copies RPROMPT we must kill it for now
+export RPROMPT=''
+# HACK
+export PROMPT="${DOCKER_MACHINE_NAME}${PROMPT}"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U select-word-style
+select-word-style bash
+
+my-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word
+
+
+export NVM_DIR="/Users/justin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

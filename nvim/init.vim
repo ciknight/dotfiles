@@ -20,7 +20,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 
 " Languages
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'pangloss/vim-javascript'
@@ -31,6 +31,8 @@ Plug 'mxw/vim-jsx'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'tpope/vim-obsession'
+Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
 
 call plug#end()
 
@@ -40,6 +42,11 @@ call plug#end()
 
 " Vanilla
 set number
+set expandtab
+
+set list
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
 colorscheme base16-eighties
 let base16colorspace=256  " for ^^
 
@@ -50,6 +57,20 @@ endif
 
 " Plugins
 let g:NERDSpaceDelims = 1
+
+" let g:syntastic_vim_checkers = ['vint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+autocmd! BufWritePost,BufEnter * Neomake
 
 " Change mappings.
 " FIXME: I added this b/c I couldn't 
@@ -122,14 +143,14 @@ map <leader>ff :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>fs :w<CR>
 
 " Dotfiles
-nmap <leader>dez :e ~/.zshrc<CR>
-nmap <leader>drz :echo 'todo'<CR>
-nmap <leader>dep :e ~/.zshenv<CR>
-nmap <leader>drp :echo 'todo'<CR>
-nmap <leader>det :e ~/.tmux.conf<CR>
-nmap <leader>drt :echo 'todo'<CR>
-nmap <leader>dev :e ~/.config/nvim/init.vim<CR>
-nmap <leader>drv :source ~/.config/nvim/init.vim<CR>
+nmap <leader>dze :e ~/.zshrc<CR>
+nmap <leader>dzr :echo 'todo'<CR>
+nmap <leader>dpe :e ~/.zshenv<CR>
+nmap <leader>dpr :echo 'todo'<CR>
+nmap <leader>dte :e ~/.tmux.conf<CR>
+nmap <leader>dtr :echo 'todo'<CR>
+nmap <leader>dve :e ~/.config/nvim/init.vim<CR>
+nmap <leader>dvr :source ~/.config/nvim/init.vim<CR>
 
 " Buffers
 nmap <leader>bb :buffers<CR>
