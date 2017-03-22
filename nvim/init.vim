@@ -69,6 +69,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:qf_loclist_window_bottom=0
 
 autocmd! BufWritePost,BufEnter * Neomake
 
@@ -143,14 +144,12 @@ map <leader>ff :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>fs :w<CR>
 
 " Dotfiles
-nmap <leader>dze :e ~/.zshrc<CR>
-nmap <leader>dzr :echo 'todo'<CR>
-nmap <leader>dpe :e ~/.zshenv<CR>
-nmap <leader>dpr :echo 'todo'<CR>
-nmap <leader>dte :e ~/.tmux.conf<CR>
-nmap <leader>dtr :echo 'todo'<CR>
-nmap <leader>dve :e ~/.config/nvim/init.vim<CR>
-nmap <leader>dvr :source ~/.config/nvim/init.vim<CR>
+nmap <leader>dez :e ~/.zshrc<CR>
+nmap <leader>drz :echo 'todo'<CR>
+nmap <leader>det :e ~/.tmux.conf<CR>
+nmap <leader>drt :echo 'todo'<CR>
+nmap <leader>dev :e ~/.config/nvim/init.vim<CR>
+nmap <leader>drv :source ~/.config/nvim/init.vim<CR>
 
 " Buffers
 nmap <leader>bb :buffers<CR>
