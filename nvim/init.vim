@@ -21,7 +21,7 @@ Plug 'chriskempson/base16-vim'
 
 " Languages
 " Plug 'klen/python-mode'
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -31,7 +31,7 @@ Plug 'mxw/vim-jsx'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'tpope/vim-obsession'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
 
 call plug#end()
@@ -59,19 +59,30 @@ endif
 let g:NERDSpaceDelims = 1
 
 " let g:syntastic_vim_checkers = ['vint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['standard']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python3_enabled_makers = ['flake8']
 let g:qf_loclist_window_bottom=0
 
+" Use local standard executable
+let g:neomake_javascript_standard_exe = $PWD .'/node_modules/.bin/standard'
+let g:neomake_python_flake8_exe = $PWD .'/venv/bin/flake8'
+let g:neomake_python3_flake8_exe = $PWD .'/venv/bin/flake8'
+
 autocmd! BufWritePost,BufEnter * Neomake
+
+if filereadable('~/.nvim_python/bin/activate')
+  source ~/.nvim_python/bin/activate
+endif
 
 " Change mappings.
 " FIXME: I added this b/c I couldn't 
@@ -97,7 +108,7 @@ call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
-let g:OmniSharp_selector_ui = 'denite'
+" let g:OmniSharp_selector_ui = 'denite'
 
 source ~/dotfiles/nvim/status.vim
 

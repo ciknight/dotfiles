@@ -8,6 +8,7 @@ export PATH=$PATH:$HOME/bin/kakoune/src
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+export PATH=$PATH:/usr/local/Cellar/node/7.7.2/bin
 
 export WORKON_HOME=~/.config/virtualenvs
 export ANDROID_HOME=~/Library/Android/sdk
