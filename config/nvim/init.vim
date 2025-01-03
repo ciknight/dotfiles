@@ -30,7 +30,8 @@ syntax off
 " Language agnostic plugins {{{
 " ---------------------------------------------------------------------------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'npm ci'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "}}}
 
 " ---------------------------------------------------------------------------------------------------------------------

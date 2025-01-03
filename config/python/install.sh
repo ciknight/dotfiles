@@ -14,7 +14,7 @@ install_python () {
         curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
         # enable pyenv
-	    export PYENV_ROOT="$HOME/.pyenv"
+        export PYENV_ROOT="$HOME/.pyenv"
         [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
         export PYTHON_BUILD_MIRROR_URL="https://pyenv.ibeats.top"
         eval "$(pyenv init -)"
@@ -22,7 +22,7 @@ install_python () {
         # install plugin pyenv-alias
         #git clone https://github.com/s1341/pyenv-alias.git $(pyenv root)/plugins/pyenv-alias
         # install python3, install tk dependency
-        sudo apt-get install -y tk-dev libx11-dev libxss1 libxcursor1 libxrandr2 libxrender1 libxi6 libxtst6
+        sudo apt-get install -y libbz2-dev libncurses5-dev libxcursor1 libffi-dev libreadline-dev libsqlite3-dev liblzma-dev tk-dev libx11-dev libxss1 libxrandr2 libxrender1 libxi6 libxtst6
         pyenv install 3.11.10
         pyenv global 3.11.10
     fi
