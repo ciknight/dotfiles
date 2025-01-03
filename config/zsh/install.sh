@@ -11,8 +11,8 @@ if hash fzf 2>/dev/null; then
 else
     if [ ! -d ~/.fzf ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-        ~/.fzf/install
     fi
+    ~/.fzf/install
 fi
 
 # tmux
