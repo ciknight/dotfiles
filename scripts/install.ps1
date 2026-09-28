@@ -19,7 +19,8 @@ $packages = @(
     'Neovim.Neovim',      # gitconfig editor = 'nvim'
     'JesseDuffield.lazygit',
     'junegunn.fzf',
-    'BurntSushi.ripgrep.MSVC'  # rg，替代 ag（the_silver_searcher 上游停更）
+    'BurntSushi.ripgrep.MSVC',  # rg，替代 ag（the_silver_searcher 上游停更）
+    'Helvesec.RMUX'
 )
 
 $failed = @()

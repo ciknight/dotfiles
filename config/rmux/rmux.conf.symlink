@@ -1,0 +1,119 @@
+################################################
+# rmux 配置 —— 从 tmux.conf 移植
+# 差异:
+#   - 状态栏用 strftime 内置格式,不用 #(cmd) shell 任务(rmux 不支持)
+#   - 删掉 if-shell macOS 分支(reattach-to-user-namespace)和 tpm 插件
+#   - reload 指向 ~/.rmux.conf
+#################################################
+
+# ======================================================================================================================
+# General
+# ======================================================================================================================
+# start windows numbering at 1
+set-option -g base-index 1
+
+# make pane numbering consistent with windows
+set-option -g pane-base-index 1
+
+# rename window to reflect current program
+set-option -g automatic-rename on
+
+# renumber windows when a window is closed
+set-option -g renumber-windows on
+
+# Key binding in the status line (bind-key :) vi or emacs
+set-option -g status-keys vi
+
+# close mouse model
+set-option -g mouse off
+
+# message display time(ms)
+set-option -g display-time 1500
+
+# History
+set-option -g history-limit 102400
+
+# Increase repeat timeout
+set-option -g repeat-time 400
+
+# fastest command sequences
+set-option -s escape-time 0
+
+# slightly longer pane indicators display time
+set-option -g display-panes-time 500
+
+# open activity notify
+set-option -g monitor-activity on
+set-option -g visual-activity on
+
+# Don't disturb.
+set-option -g visual-bell off
+
+# 24 hour clock
+set-option -g clock-mode-style 24
+set-option -g clock-mode-colour colour223
+
+# ======================================================================================================================
+# UI
+# ======================================================================================================================
+# set terminal title
+set-option -g set-titles on
+set-option -g set-titles-string "#h ❐ #S ● #I #W"
+
+# 256-color terminal
+set-option -g default-terminal "screen-256color"
+
+# Always show the status bar.
+set-option -g status on
+
+# Position of the status bar.
+set-option -g status-position "bottom"
+
+# set status panel item centre
+set-option -g status-justify "centre"
+set-option -g status-interval 3
+
+# left status
+set-option -g status-left-length 120
+set-option -g status-left "#[default]» #[fg=colour187]s:#S #[default]• #[fg=colour187]w#I.p#P • #[fg=colour187]#h"
+
+# right status —— strftime 内置格式,不用 #(date)
+set-option -g status-right-length 120
+set-option -g status-right "#[default]• #[fg=#7fb8d8]%y-%m-%d (%a) %H:%M"
+
+# set status background color
+set-option -g status-bg colour235
+set-option -g status-fg colour248
+
+# set status-bar window list
+set-option -g window-status-format "#I:#W#F"
+set-option -g window-status-current-format "[#I:#W#F]"
+
+# set command active color
+set-option -g message-style "bg=default,fg=red,bold"
+set-option -g message-command-style "bg=default,fg=white,bold"
+
+# ======================================================================================================================
+# Keymap
+# ======================================================================================================================
+# pane resizing
+bind -r H resize-pane -L 2
+bind -r J resize-pane -D 2
+bind -r K resize-pane -U 2
+bind -r L resize-pane -R 2
+
+# switch windows without prefix
+bind -n M-h previous-window
+bind -n M-l next-window
+
+# clear both screen and history
+bind -n C-l send-keys C-l \; run "rmux clear-history"
+
+# reload config (prefix r)
+unbind r
+bind r source-file ~/.rmux.conf \; display "~/.rmux.conf Configuration reloaded!"
+
+# vim copy-mode
+set-option -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection

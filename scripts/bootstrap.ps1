@@ -73,6 +73,9 @@ function Install-Dotfiles {
     Link-File "$DotfilesRoot\config\git\gitignore.global.symlink" "$HOME\.gitignore.global"
     Link-File "$DotfilesRoot\config\git\gitmessage.symlink"       "$HOME\.gitmessage"
 
+    # rmux：终端复用（Windows 原生 ConPTY，配置从 tmux.conf 移植）
+    Link-File "$DotfilesRoot\config\rmux\rmux.conf.symlink" "$HOME\.rmux.conf"
+
     # PowerShell profile：PS 5.1 与 PS 7 两个路径都链接
     $profileSrc = Join-Path $DotfilesRoot 'config\powershell\profile.ps1'
     foreach ($profileDir in @("$HOME\Documents\WindowsPowerShell", "$HOME\Documents\PowerShell")) {
