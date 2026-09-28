@@ -1,0 +1,5 @@
+# Force LF for shell/config files so Windows editors can't introduce CRLF
+*.symlink text eol=lf
+*.sh text eol=lf
+*.zsh text eol=lf
+*.bash text eol=lf

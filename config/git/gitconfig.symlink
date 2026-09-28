@@ -33,10 +33,11 @@
            --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [core]
     editor = 'nvim'
-    safecrlf = true
-    excludesfile = /Users/andywang/.gitignore.global
+    safecrlf = false
+    excludesfile = ~/.gitignore.global
     ignorecase = false
     quotepath = false  # 不会对0×80以上的字符进行quote。中文显示正常
+    autocrlf = false
 [branch]
     autosetuprebase = always # autosetupmerge, which will link the upstream branch each time you create or checkout a new branch.
 [pull]
@@ -70,3 +71,7 @@
     commitencoding = utf-8
 [commit]
     template = ~/.gitmessage
+[coderabbit]
+    machineId = cli/e7e4c21a938945e49fd4cb99db7b618c
+[credential]
+    helper = wincred

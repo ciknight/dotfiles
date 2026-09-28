@@ -1,0 +1,45 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "copyOnSelect": true,
+    "schemes": [
+        {
+            "name": "Gruvbox Dark",
+            "background": "#282828",
+            "foreground": "#EBDBB2",
+            "cursorColor": "#EBDBB2",
+            "selectionBackground": "#504945",
+            "black": "#282828",
+            "red": "#CC241D",
+            "green": "#98971A",
+            "yellow": "#D79921",
+            "blue": "#458588",
+            "purple": "#B16286",
+            "cyan": "#689D6A",
+            "white": "#A89984",
+            "brightBlack": "#928374",
+            "brightRed": "#FB4934",
+            "brightGreen": "#B8BB26",
+            "brightYellow": "#FABD2F",
+            "brightBlue": "#83A598",
+            "brightPurple": "#D3869B",
+            "brightCyan": "#8EC07C",
+            "brightWhite": "#EBDBB2"
+        }
+    ],
+    "profiles": {
+        "defaults": {
+            "colorScheme": "Gruvbox Dark",
+            "font": { "face": "Cascadia Mono" }
+        }
+    },
+    "actions": [
+        { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+minus" },
+        { "command": { "action": "splitPane", "split": "vertical" },   "keys": "alt+shift+plus" },
+        { "command": "closePane", "keys": "ctrl+shift+w" },
+        { "command": { "action": "moveFocus", "direction": "left"  }, "keys": "alt+h" },
+        { "command": { "action": "moveFocus", "direction": "down"  }, "keys": "alt+j" },
+        { "command": { "action": "moveFocus", "direction": "up"    }, "keys": "alt+k" },
+        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" }
+    ]
+}

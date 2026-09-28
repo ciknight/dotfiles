@@ -19,9 +19,9 @@ export SYSTEM=`uname -s`
 
 # Add wisely, as too many plugins slow down shell startup.
 if [ $SYSTEM = "Darwin" ] ; then
-    plugins=(git z command-not-found docker brew zsh-autosuggestions zsh-syntax-highlighting)
+    plugins=(git z command-not-found brew zsh-autosuggestions zsh-syntax-highlighting)
 elif [ $SYSTEM = "Linux" ] ; then
-    plugins=(git z command-not-found docker systemd zsh-autosuggestions zsh-syntax-highlighting)
+    plugins=(git z command-not-found systemd zsh-autosuggestions zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -194,3 +194,13 @@ function cd {
 }
 
 auto_pipenv_shell
+
+# Zoxide: smarter cd (z command), 与 PowerShell 端统一
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
+
+# CodeRabbit CLI (~/.local/bin)
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi

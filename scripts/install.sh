@@ -13,7 +13,7 @@ if [ $SYSTEM == "Darwin" ]; then
     # Install tools
     ## ack, ag, pt or rg, support vim ctrlsf and tagbar
     brew install ack the_silver_searcher ctags
-    brew install htop lazygit ipcalc cloc tig jq wget ncdu
+    brew install htop lazygit ipcalc cloc tig jq wget ncdu zoxide
     ## Install neovim tmux
     brew install git zsh tmux neovim
     # Fix tmux exited on osx
@@ -48,6 +48,13 @@ elif [ $SYSTEM = "Linux" ]; then
         sudo apt update -y
         sudo apt install -y gcc cmake curl tig lynx htop exuberant-ctags silversearcher-ag jq ack-grep
         sudo apt install -y git zsh tmux vim neovim
+
+        # zoxide: z 目录跳转；老版本 apt 源没有时回退官方安装脚本
+        if apt-cache show zoxide >/dev/null 2>&1; then
+            sudo apt install -y zoxide
+        else
+            curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo sh -s -- --bin-dir /usr/local/bin
+        fi
 
         sudo apt install -y golang npm
     elif which yum 2>&1 > /dev/null; then
