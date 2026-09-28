@@ -52,12 +52,12 @@ if (Test-Path "F:\Program Files\miniconda3\Scripts\conda.exe") {
 }
 
 # rmux web-share 局域网一键分享
-# 用法: rshare [-Session 名] [-Ttl 秒] [-Ip 手动指定IP]  启动
+# 用法: rshare [-Session 名] [-Ttl 秒] [-Ip 手动指定IP]  启动（默认不限期）
 #       rshare -Stop                                 停止并清理
 function rshare {
     param(
         [string]$Session = "share-$(Get-Date -Format 'HHmmss')",
-        [int]$Ttl = 7200,
+        [int]$Ttl = 0,   # 0 = 不限期，>0 时传给 --ttl
         [switch]$Stop,
         [string]$Ip   # 自动探测不准时手动指定局域网 IP
     )
@@ -80,8 +80,10 @@ function rshare {
     rmux has-session -t $Session 2>$null
     if ($LASTEXITCODE -ne 0) { rmux new-session -d -s $Session }
 
-    # 启动分享并抓取链接/PIN
-    $out = rmux web-share -t $Session --ttl $Ttl 2>&1 | Out-String
+    # 启动分享并抓取链接/PIN（Ttl > 0 才加期限，否则 rmux 默认不限期）
+    $wsArgs = @('web-share', '-t', $Session)
+    if ($Ttl -gt 0) { $wsArgs += @('--ttl', $Ttl) }
+    $out = rmux @wsArgs 2>&1 | Out-String
     $spectator = [regex]::Match($out, 'spectator (https://\S+)').Groups[1].Value
     $operator  = [regex]::Match($out, 'rmux:\s+(https://\S+)').Groups[1].Value
     $spPin = [regex]::Match($out, 'spectator pin (\d+)').Groups[1].Value
@@ -110,7 +112,8 @@ function rshare {
 
     $endpoint = "ws://${Ip}:${port}/share"
     Write-Host ''
-    Write-Host "  局域网 IP: $Ip  端口: $port  会话: $Session  有效期: $([TimeSpan]::FromSeconds($Ttl))" -ForegroundColor Cyan
+    $ttlText = if ($Ttl -gt 0) { [TimeSpan]::FromSeconds($Ttl) } else { '不限期' }
+    Write-Host "  局域网 IP: $Ip  端口: $port  会话: $Session  有效期: $ttlText" -ForegroundColor Cyan
     $spUrl = $spectator.Replace('#t=', "#e=$endpoint&t=")
     $opUrl = $operator.Replace('#t=', "#e=$endpoint&t=")
     Write-Host "  只读 spectator（PIN $spPin）:" -ForegroundColor Green
