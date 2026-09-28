@@ -57,7 +57,7 @@ if (Test-Path "F:\Program Files\miniconda3\Scripts\conda.exe") {
 function rshare {
     param(
         [string]$Session = "share-$(Get-Date -Format 'HHmmss')",
-        [int]$Ttl = 3600,
+        [int]$Ttl = 7200,
         [switch]$Stop,
         [string]$Ip   # 自动探测不准时手动指定局域网 IP
     )
